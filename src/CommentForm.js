@@ -39,14 +39,13 @@ export default class CommentForm extends Component {
 	}
 
 	render() {
-		var options = this.state.users.map(user => {
-			return (<option value={user.id} key={user.id}>{user.nickname}</option>);
-		});
 		return (
 			<form className="CommentForm" onSubmit={this.handleSubmit.bind(this)}>
 				<select name="author" value={this.state.author} onChange={this.handleAuthorChange.bind(this)}>
 					<option value="0" key="0"></option>
-					{options}
+					{ this.state.users.map(user => 
+						<option value={user.id} key={user.id}>{user.nickname}</option>;
+					)}
 				</select>
 				<input type="text" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
     			<input type="submit" value="Post" />
