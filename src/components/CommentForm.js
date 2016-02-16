@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CommentAction from '../actions/CommentAction';
 
 export default class CommentForm extends Component {
 	constructor() {
@@ -43,9 +44,9 @@ export default class CommentForm extends Component {
 			<form className="CommentForm" onSubmit={this.handleSubmit.bind(this)}>
 				<select name="author" value={this.state.author} onChange={this.handleAuthorChange.bind(this)}>
 					<option value="0" key="0"></option>
-					{ this.state.users.map(user => 
-						<option value={user.id} key={user.id}>{user.nickname}</option>;
-					)}
+					{ this.state.users.map(user => {
+						return (<option value={user.id} key={user.id}>{user.nickname}</option>);
+					} )}
 				</select>
 				<input type="text" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
     			<input type="submit" value="Post" />
