@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import AppDispatcher from '../dispatcher/AppDispatcher';
+// import AppDispatcher from '../dispatcher/AppDispatcher';
 
 var _comments = []
 
@@ -41,16 +41,3 @@ class CommentStore extends EventEmitter {
 var instance = new CommentStore();
 export default instance;
 
-AppDispatcher.register(action => {
-	switch (action.actionType) {
-		case 'comment.create':
-			instance.create(action.comment);
-			break;
-		case 'comment.updateAll':
-			instance.updateAll();
-			break;
-		default:
-			return true;
-	}
-	return true;
-});
