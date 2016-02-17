@@ -13,4 +13,5 @@ var CommentAction = {
 		});
 	}
 }
+
 export default CommentAction;

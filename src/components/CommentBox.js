@@ -7,7 +7,7 @@ import CommentStore from '../stores/CommentStore';
 export default class CommentBox extends Component {
 	constructor() {
 		super();
-		this.state = {data: CommentStore.getAll()};
+		this.state = {data: []};
 	}
 
 	componentDidMount() {
@@ -21,8 +21,10 @@ export default class CommentBox extends Component {
 
 	render() {
 		return (
-			<div className="commentBox">
-				<h1>Комментарии</h1>
+			<div className="panel panel-default">
+				<div className="panel-heading">
+    				<h1 className="panel-title">Комментарии</h1>
+  				</div>
 				<CommentList data={this.state.data} />
 				<CommentForm onCommentSubmit={CommentAction.create} />
 			</div>

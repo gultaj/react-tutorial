@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import CommentAction from '../actions/CommentAction';
+import UserAction from '../actions/UserAction';
+import UserStore from '../stores/UserStore';
 
 export default class CommentForm extends Component {
 	constructor() {
@@ -8,18 +10,12 @@ export default class CommentForm extends Component {
 	}
 
 	componentDidMount() {
-	    this.loadUsersFromServer();
+	    UserStore.on('change', this._onChange.bind(this));
+	    UserAction.updateAll();
 	}
 
-	loadUsersFromServer() {
-		$.ajax({
-	    	type: 'GET',
-	    	url: '//reactcomments.dev/users',
-	    	dataType: 'jsonp',
-	    	cache: false,
-	    	success: result => { this.setState({users: result}); },
-	    	error: (xhr, status, err) => { console.error(this.props.url, status, err.toString()); }
-	    });	
+	componentWillUnmount() {
+		UserStore.removeListener('change', this._onChange.bind(this));
 	}
 
 	handleTextChange(e) {
@@ -41,16 +37,26 @@ export default class CommentForm extends Component {
 
 	render() {
 		return (
-			<form className="CommentForm" onSubmit={this.handleSubmit.bind(this)}>
-				<select name="author" value={this.state.author} onChange={this.handleAuthorChange.bind(this)}>
-					<option value="0" key="0"></option>
-					{ this.state.users.map(user => {
-						return (<option value={user.id} key={user.id}>{user.nickname}</option>);
-					} )}
-				</select>
-				<input type="text" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
-    			<input type="submit" value="Post" />
-			</form>
+			<div className="panel-footer">
+				<form className="commentForm" onSubmit={this.handleSubmit.bind(this)}>
+	    			<div className="input-group">
+    					<select name="author" className="form-control w30" value={this.state.author} onChange={this.handleAuthorChange.bind(this)}>
+							<option value="0" key="0"></option>
+							{ this.state.users.map(user => {
+								return (<option value={user.id} key={user.id}>{user.nickname}</option>);
+							} )}
+						</select>
+	      				<input type="text" className="form-control w70 ml-1" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
+      					<div className="input-group-btn">
+      						<input type="submit" className="btn btn-success ml-2" value="Отправить" />
+      					</div>
+    				</div>
+				</form>
+			</div>
 		);
+	}
+
+	_onChange() {
+		this.setState({users: UserStore.getAll()});
 	}
 }
