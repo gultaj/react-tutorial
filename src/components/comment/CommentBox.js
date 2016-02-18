@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import CommentAction from '../actions/CommentAction';
-import CommentStore from '../stores/CommentStore';
+import CommentAction from 'actions/CommentAction';
+import CommentStore from 'stores/CommentStore';
 
 export default class CommentBox extends Component {
 	constructor() {

@@ -1,5 +1,5 @@
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import {CommentConst} from '../dispatcher/ConstDispatcher';
+import AppDispatcher from 'dispatcher/AppDispatcher';
+import {CommentConst} from 'dispatcher/ConstDispatcher';
 
 var CommentAction = {
 	create: comment => {

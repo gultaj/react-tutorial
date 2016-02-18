@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CommentAction from '../actions/CommentAction';
-import UserAction from '../actions/UserAction';
-import UserStore from '../stores/UserStore';
+import CommentAction from 'actions/CommentAction';
+import UserAction from 'actions/UserAction';
+import UserStore from 'stores/UserStore';
 
 export default class CommentForm extends Component {
 	constructor() {

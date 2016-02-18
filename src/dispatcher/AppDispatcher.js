@@ -1,6 +1,6 @@
 import {Dispatcher} from 'flux';
-import CommentStore from '../stores/CommentStore';
-import UserStore from '../stores/UserStore';
+import CommentStore from 'stores/CommentStore';
+import UserStore from 'stores/UserStore';
 import {CommentConst, UserConst} from './ConstDispatcher';
 
 var AppDispatcher = new Dispatcher();

@@ -13,6 +13,7 @@ module.exports = {
     publicPath: '/dist/'
   },
   resolve: {
+    root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js']
   },
   devtool: 'eval-source-map',

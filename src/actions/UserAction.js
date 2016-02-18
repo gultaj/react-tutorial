@@ -1,5 +1,5 @@
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import {UserConst} from '../dispatcher/ConstDispatcher';
+import AppDispatcher from 'dispatcher/AppDispatcher';
+import {UserConst} from 'dispatcher/ConstDispatcher';
 
 var UserAction = {
 	index: () => {

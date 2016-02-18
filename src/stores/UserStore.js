@@ -23,6 +23,5 @@ class UserStore extends BaseStore {
 	}
 }
 
-var instance = new UserStore();
-export default instance;
+export default new UserStore();
 
