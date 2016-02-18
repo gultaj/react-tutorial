@@ -1,15 +1,16 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import {CommentConst} from '../dispatcher/ConstDispatcher';
 
 var CommentAction = {
 	create: comment => {
 		AppDispatcher.dispatch({
-			actionType: 'comment.create',
+			actionType: CommentConst.CREATE,
 			comment: comment
 		});
 	},
 	updateAll: () => {
 		AppDispatcher.dispatch({
-			actionType: 'comment.updateAll'
+			actionType: CommentConst.INDEX
 		});
 	}
 }

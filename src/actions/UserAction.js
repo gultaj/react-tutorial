@@ -1,9 +1,10 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import {UserConst} from '../dispatcher/ConstDispatcher';
 
 var UserAction = {
 	updateAll: () => {
 		AppDispatcher.dispatch({
-			actionType: 'user.updateAll'
+			actionType: UserConst.INDEX
 		});
 	}
 }

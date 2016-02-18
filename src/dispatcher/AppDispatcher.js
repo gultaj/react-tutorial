@@ -1,22 +1,16 @@
 import {Dispatcher} from 'flux';
 import CommentStore from '../stores/CommentStore';
 import UserStore from '../stores/UserStore';
+import {CommentConst, UserConst} from './ConstDispatcher';
 
 var AppDispatcher = new Dispatcher();
 
 AppDispatcher.register(action => {
 	switch (action.actionType) {
-		case 'comment.create':
-			CommentStore.create(action.comment);
-			break;
-		case 'comment.updateAll':
-			CommentStore.updateAll();
-			break;
-		case 'user.updateAll':
-			UserStore.updateAll();
-			break;
-		default:
-			return true;
+		case CommentConst.CREATE: CommentStore.create(action.comment); break;
+		case CommentConst.INDEX: CommentStore.updateAll(); break;
+		case UserConst.INDEX: UserStore.updateAll(); break;
+		default: return true;
 	}
 });
 
