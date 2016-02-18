@@ -1,25 +1,22 @@
-import EventEmitter from 'events';
-// import AppDispatcher from '../dispatcher/AppDispatcher';
+import BaseStore from './BaseStore';
 
 var _users = []
 
-var url = '//reactcomments.dev/users';
-
-class UserStore extends EventEmitter {
+class UserStore extends BaseStore {
 
 	getAll() {
 		return _users;
 	}
 
-	updateAll() {
+	index() {
 		$.ajax({
 	    	type: 'GET',
-	    	url: url,
+	    	url: '//reactcomments.dev/users',
 	    	dataType: 'jsonp',
 	    	cache: false,
 	    	success: result => { 
 	    		_users = result;    		
-				this.emit('change');
+				this.emitChange();
 	    	},
 	    	error: (xhr, status, err) => { console.error(url, status, err.toString()); }
 	    });

@@ -8,8 +8,8 @@ var AppDispatcher = new Dispatcher();
 AppDispatcher.register(action => {
 	switch (action.actionType) {
 		case CommentConst.CREATE: CommentStore.create(action.comment); break;
-		case CommentConst.INDEX: CommentStore.updateAll(); break;
-		case UserConst.INDEX: UserStore.updateAll(); break;
+		case CommentConst.INDEX: CommentStore.index(); break;
+		case UserConst.INDEX: UserStore.index(); break;
 		default: return true;
 	}
 });

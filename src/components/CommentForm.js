@@ -10,12 +10,12 @@ export default class CommentForm extends Component {
 	}
 
 	componentDidMount() {
-	    UserStore.on('change', this._onChange.bind(this));
-	    UserAction.updateAll();
+	    UserStore.addChangeListener(this._onChange.bind(this));
+	    UserAction.index();
 	}
 
 	componentWillUnmount() {
-		UserStore.removeListener('change', this._onChange.bind(this));
+		UserStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	handleTextChange(e) {

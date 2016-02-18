@@ -8,7 +8,7 @@ var CommentAction = {
 			comment: comment
 		});
 	},
-	updateAll: () => {
+	index: () => {
 		AppDispatcher.dispatch({
 			actionType: CommentConst.INDEX
 		});

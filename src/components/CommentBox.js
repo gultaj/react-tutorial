@@ -11,12 +11,12 @@ export default class CommentBox extends Component {
 	}
 
 	componentDidMount() {
-	    CommentStore.on('change', this._onChange.bind(this));
-	    CommentAction.updateAll();
+	    CommentStore.addChangeListener(this._onChange.bind(this));
+	    CommentAction.index();
 	}
 
 	componentWillUnmount() {
-		CommentStore.removeListener('change', this._onChange.bind(this));
+		CommentStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	render() {
