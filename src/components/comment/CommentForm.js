@@ -18,35 +18,27 @@ export default class CommentForm extends Component {
 		UserStore.removeChangeListener(this._onChange.bind(this));
 	}
 
-	handleTextChange(e) {
-		this.setState({text: e.target.value});
-	}
-
-	handleAuthorChange(e) {
-		this.setState({author: e.target.value});
-	}
-
 	handleSubmit(e) {
 		e.preventDefault();
-		var author = parseInt(this.state.author.trim());
-		var text = this.state.text.trim();
+		var author = parseInt(e.target.elements["author"].value);
+		var text = e.target.elements["text"].value.trim();
 		if (!text || !author) return;
-		this.props.onCommentSubmit({user_id: author, text: text});
-		this.setState({author: '', text: ''});
+		CommentAction.create({user_id: author, text: text});
+		e.target.reset();
 	}
 
 	render() {
 		return (
 			<div className="panel-footer">
-				<form className="commentForm" onSubmit={this.handleSubmit.bind(this)}>
+				<form className="commentForm" id="comment-form" onSubmit={this.handleSubmit.bind(this)}>
 	    			<div className="input-group">
-    					<select name="author" className="form-control w30" value={this.state.author} onChange={this.handleAuthorChange.bind(this)}>
+    					<select name="author" className="form-control w30">
 							<option value="0" key="0"></option>
 							{ this.state.users.map(user => {
 								return (<option value={user.id} key={user.id}>{user.nickname}</option>);
 							} )}
 						</select>
-	      				<input type="text" className="form-control w70 ml-1" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
+	      				<input type="text" className="form-control w70 ml-1" name="text" />
       					<div className="input-group-btn">
       						<input type="submit" className="btn btn-success ml-2" value="Отправить" />
       					</div>
@@ -57,6 +49,6 @@ export default class CommentForm extends Component {
 	}
 
 	_onChange() {
-		this.setState({users: UserStore.getAll()});
+		this.setState({users: UserStore.users});
 	}
 }

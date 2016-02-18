@@ -4,7 +4,7 @@ var _comments = [];
 
 class CommentStore extends BaseStore {
 
-	getAll() {
+	get comments() {
 		return _comments;
 	}
 

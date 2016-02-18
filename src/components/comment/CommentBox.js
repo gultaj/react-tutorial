@@ -26,12 +26,12 @@ export default class CommentBox extends Component {
     				<h1 className="panel-title">Комментарии</h1>
   				</div>
 				<CommentList data={this.state.data} />
-				<CommentForm onCommentSubmit={CommentAction.create} />
+				<CommentForm />
 			</div>
 		);
 	}
 
 	_onChange() {
-    	this.setState({data: CommentStore.getAll()});
+    	this.setState({data: CommentStore.comments});
   	}
 }
