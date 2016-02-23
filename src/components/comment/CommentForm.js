@@ -15,7 +15,8 @@ export default class CommentForm extends Component {
 	}
 
 	componentWillUnmount() {
-		UserStore.removeChangeListener(this._onChange.bind(this));
+		// this.state = {};
+		// UserStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	handleSubmit(e) {
