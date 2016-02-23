@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import CommentBox from './components/comment/CommentBox';
-import CommentStore from './stores/CommentStore';
+import { Router, browserHistory } from 'react-router';
+import routes from 'components/routes';
 
 render(
-	<CommentBox url='//reactcomments.dev/comments' />, document.getElementById('app')
+	<Router routes={routes} history={browserHistory} />, document.getElementById('app')
 );
