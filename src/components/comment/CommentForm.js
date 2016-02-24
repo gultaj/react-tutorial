@@ -12,11 +12,12 @@ export default class CommentForm extends Component {
 	componentDidMount() {
 	    UserStore.addChangeListener(this._onChange.bind(this));
 	    UserAction.index();
+	    this._isMounted = true;
 	}
 
 	componentWillUnmount() {
-		// this.state = {};
-		// UserStore.removeChangeListener(this._onChange.bind(this));
+		UserStore.removeChangeListener(this._onChange.bind(this));
+		this._isMounted = false;
 	}
 
 	handleSubmit(e) {
@@ -50,6 +51,7 @@ export default class CommentForm extends Component {
 	}
 
 	_onChange() {
-		this.setState({users: UserStore.users});
+		if (this._isMounted)
+			this.setState({users: UserStore.users});
 	}
 }

@@ -6,6 +6,7 @@ class UserStore extends BaseStore {
 	constructor() {
 		super();
 		this.url = '//reactcomments.dev/users';
+		this.request = {};
 	}
 
 	get users() {
@@ -18,12 +19,11 @@ class UserStore extends BaseStore {
 	    	url: this.url,
 	    	dataType: 'jsonp',
 	    	cache: false,
-	    	success: result => { 
-	    		_users = result;    		
-				this.emitChange();
-	    	},
 	    	error: (xhr, status, err) => { console.error(this.url, status, err.toString()); }
-	    });
+	    }).done(result => { 
+    		_users = result;    		
+			this.emitChange();
+    	});
 	}
 }
 
