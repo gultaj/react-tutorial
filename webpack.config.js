@@ -5,6 +5,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:5000',
     'webpack/hot/dev-server',
+    'babel-polyfill',
     './src/index'
   ],
   output: {
@@ -14,7 +15,7 @@ module.exports = {
   },
   resolve: {
     root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.jsx']
   },
   devtool: 'eval-source-map',
   plugins: [
@@ -24,7 +25,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src')
       }

@@ -13,12 +13,10 @@ export default class CommentBox extends Component {
 	componentDidMount() {
 	    CommentStore.addChangeListener(this._onChange.bind(this));
 	    CommentAction.index();
-	    this._isMounted = true;
 	}
 
 	componentWillUnmount() {
 		CommentStore.removeChangeListener(this._onChange.bind(this));
-		this._isMounted = false;
 	}
 
 	render() {
@@ -34,7 +32,7 @@ export default class CommentBox extends Component {
 	}
 
 	_onChange() {
-		if (this._isMounted)
+		if (this.updater.isMounted(this))
 	    	this.setState({data: CommentStore.comments});
   	}
 }
