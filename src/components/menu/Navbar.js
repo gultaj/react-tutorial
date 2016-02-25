@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import NavLink from './NavLink';
+import { Link } from 'react-router';
 
-export default class Menu extends Component {
-	constructor() {
-		super();
-		// this.state.contextTypes = {
-  //       	router: React.PropTypes.func
-  //   	};
-	}
-
+export default class Navbar extends Component {
 	render() {
-		// let isActive = this.history.isActive(this.props.to, this.props.query);
-		
 		return (
 			<nav className="navbar navbar-default">
   				<div className="container">
@@ -20,8 +12,8 @@ export default class Menu extends Component {
   					</div>
   					<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   						<ul className="nav navbar-nav">
-  							<li><Link activeClassName="active" to="/">Home</Link></li>
-  							<li><Link activeClassName="active" to="/about">About</Link></li>
+  							<NavLink currentRoute={this.props.currentRoute} to="/" title="Home" />
+  							<NavLink currentRoute={this.props.currentRoute} to="/about" title="About" />
   						</ul>
   					</div>
 				</div>

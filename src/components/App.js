@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Menu from './menu';
+import NavBar from './menu/NavBar';
 
 export default class App extends Component {
 	render() {
-		// console.log(this);
 		return (
 			<div className="wrapper">
-				<Menu />
+				<NavBar currentRoute={this.props.location.pathname} />
 				<div className="container">
 					{this.props.children}
 				</div>
