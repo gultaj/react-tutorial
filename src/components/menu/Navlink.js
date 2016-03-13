@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default class NavLink extends Component {
 	get isActive() {
-		return this.props.to == this.props.currentRoute;
+		return this.props.to == localStorage.getItem('currentRoute');
 	}
 
 	render() {
