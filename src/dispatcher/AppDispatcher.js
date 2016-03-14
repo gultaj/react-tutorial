@@ -1,7 +1,8 @@
 import {Dispatcher} from 'flux';
 import CommentStore from 'stores/CommentStore';
 import UserStore from 'stores/UserStore';
-import {CommentConst, UserConst} from './ConstDispatcher';
+import AuthStore from 'stores/AuthStore';
+import {CommentConst, UserConst, AuthConst} from './ConstDispatcher';
 
 var AppDispatcher = new Dispatcher();
 
@@ -10,6 +11,9 @@ AppDispatcher.register(action => {
 		case CommentConst.CREATE: CommentStore.create(action.comment); break;
 		case CommentConst.INDEX: CommentStore.index(); break;
 		case UserConst.INDEX: UserStore.index(); break;
+		case AuthConst.LOGIN: AuthStore.login(); break;
+		case AuthConst.REGISTER: AuthStore.register(); break;
+		case AuthConst.LOGOUT: AuthStore.logout(); break;
 		default: return true;
 	}
 });
