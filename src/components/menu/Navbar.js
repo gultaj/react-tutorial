@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavLink from './NavLink';
+import Profile from './Profile';
 import { Link } from 'react-router';
 
 export default class Navbar extends Component {
@@ -12,11 +13,11 @@ export default class Navbar extends Component {
   					</div>
   					<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   						<ul className="nav navbar-nav">
-                <NavLink currentRoute={this.props.currentRoute} to="/" title="Home" />
-                <NavLink currentRoute={this.props.currentRoute} to="/about" title="About" />
+                <NavLink to="/" title="Home" />
+                <NavLink to="/about" title="About" />
               </ul>
               <ul className="nav navbar-nav navbar-right">
-  							<NavLink currentRoute={this.props.currentRoute} to="/auth/login" title="Login" />
+  							<Profile />
   						</ul>
   					</div>
 				</div>
