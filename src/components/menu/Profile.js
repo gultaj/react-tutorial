@@ -29,7 +29,16 @@ export default class Profile extends Component {
       !this.state.currentUser ? (
         <NavLink to="/auth/login" title="Login" />
       ) : (
-        <span onClick={this.handleClick.bind(this)}>{this.state.currentUser.nickname} </span>
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {this.state.currentUser.nickname} <span className="caret"></span>
+          </a>
+          <ul className="dropdown-menu">
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" onClick={this.handleClick.bind(this)}>Logout</a></li>
+          </ul>
+        </li>
       )
     );
 	}

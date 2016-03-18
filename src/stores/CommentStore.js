@@ -9,29 +9,31 @@ class CommentStore extends BaseStore {
 	}
 
 	index() {
+		var url = '//reactcomments.dev/comments';
 		$.ajax({
 			type: 'GET',
-			url: '//reactcomments.dev/comments',
+			url: url,
 			dataType: 'jsonp',
 			cache: false,
 			success: result => { 
 				_comments = result;    		
 				this.emitChange();
 			},
-			error: (xhr, status, err) => { console.error(this.props.url, status, err.toString()); }
+			error: (xhr, status, err) => { console.error(url, status, err.toString()); }
 		});
 	}
 
 	create(comment) {
+		var url = '//reactcomments.dev/comments';
 		$.ajax({
 			type: 'POST',
-			url: '//reactcomments.dev/comments',
+			url: url,
 			data: comment,
 			success: result => { 
 				_comments = result;    		
 				this.emitChange();
 			},
-			error: (xhr, status, err) => { console.error(this.props.url, status, err.toString()); }
+			error: (xhr, status, err) => { console.error(url, status, err.toString()); }
 		});
 	}
 }

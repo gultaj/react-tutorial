@@ -1,31 +1,34 @@
 import BaseStore from './BaseStore';
+import { browserHistory } from 'react-router';
 
 var _currentUser = null;
 
 class AuthStore extends BaseStore {
 	login(user) {
+		var url = 'http://reactcomments.dev/auth/login';
 		$.ajax({
 			type: 'POST',
-			url: 'http://reactcomments.dev/auth/login',
+			url: url,
 			data: user,
 			success: result => { 
 				_currentUser = result;    		
 				this.emitChange();
+				browserHistory.push('/');
 			},
-			error: (xhr, status, err) => { console.error(this.props.url, status, err.toString()); }
+			error: (xhr, status, err) => { console.error(url, status, err.toString()); }
 		});
 	}
 
 	logout() {
 		var url = 'http://reactcomments.dev/auth/logout';
-		// console.log('logout');
 		$.ajax({
 			type: 'POST',
 			url: url,
 			data: _currentUser,
 			success: result => { 
-				_currentUser = null;    		
+				_currentUser = null;  
 				this.emitChange();
+				browserHistory.push('/auth/login');  		
 			},
 			error: (xhr, status, err) => { console.error(url, status, err.toString()); }
 		});
