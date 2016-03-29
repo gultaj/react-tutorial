@@ -35,7 +35,7 @@ export default class Profile extends Component {
           </a>
           <ul className="dropdown-menu">
             <li><a href="#">Settings</a></li>
-            <li role="separator" class="divider"></li>
+            <li role="separator" className="divider"></li>
             <li><a href="#" onClick={this.handleClick.bind(this)}>Logout</a></li>
           </ul>
         </li>

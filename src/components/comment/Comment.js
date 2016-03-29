@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 export default class Comment extends Component {
+	static propTypes = {
+		author: React.PropTypes.string.isRequired
+	};
+
 	render() {
 		return (
 			<div className="comment media">

@@ -27,7 +27,7 @@ export default class Login extends Component {
 	                <h3 className="panel-title">Sign In</h3>
 	            </div>
 	            <div className="panel-body">
-	                <form role="form" id="login-form" onSubmit={this.handleSubmit.bind(this)}>
+	                <form role="form" id="login-form" onSubmit={(e) => this.handleSubmit(e)}>
 	                    <fieldset>
 	                        <div className="form-group">
 	                            <input className="form-control" placeholder="E-mail" name="email" type="email" autofocus="" />
