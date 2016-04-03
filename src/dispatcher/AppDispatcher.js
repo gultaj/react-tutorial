@@ -4,7 +4,7 @@ import UserStore from 'stores/UserStore';
 import AuthStore from 'stores/AuthStore';
 import {CommentConst, UserConst, AuthConst} from './ConstDispatcher';
 
-var AppDispatcher = new Dispatcher();
+const AppDispatcher = new Dispatcher();
 
 AppDispatcher.register(action => {
 	switch (action.actionType) {

@@ -12,4 +12,4 @@ export default (
 		<Route path="/auth/login" component={Login}/>
 
 	</Route>
-)
+);

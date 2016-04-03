@@ -1,20 +1,20 @@
 import EventEmitter from 'events';
 
+const CHANGE_EVENT = 'change';
 export default class BaseStore extends EventEmitter {
 	constructor() {
 		super();
-		const CHANGE_EVENT = 'change';
 	}
 
 	emitChange() {
-    	this.emit(this.CHANGE_EVENT);
-  	}
+		this.emit(CHANGE_EVENT);
+	}
 
 	addChangeListener(callback) {
-		this.on(this.CHANGE_EVENT, callback);
+		this.on(CHANGE_EVENT, callback);
 	}
 
 	removeChangeListener(callback) {
-		this.removeListener(this.CHANGE_EVENT, callback);
+		this.removeListener(CHANGE_EVENT, callback);
 	}
 }

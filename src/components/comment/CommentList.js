@@ -1,7 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import Comment from './Comment';
 
 export default class CommentList extends Component {
+	static propTypes = {
+		data: PropTypes.array
+	};
+
 	render() {
 		return (
 			<div className="CommentList panel-body">

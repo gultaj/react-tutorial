@@ -1,7 +1,7 @@
 import AppDispatcher from 'dispatcher/AppDispatcher';
 import {CommentConst} from 'dispatcher/ConstDispatcher';
 
-var CommentAction = {
+const CommentAction = {
 	create: comment => {
 		AppDispatcher.dispatch({
 			actionType: CommentConst.CREATE,
@@ -16,3 +16,9 @@ var CommentAction = {
 }
 
 export default CommentAction;
+
+export function createComment(comment) {
+	return dispatch => {
+		
+	}
+}

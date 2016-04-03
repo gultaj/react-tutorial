@@ -1,6 +1,7 @@
 import BaseStore from './BaseStore';
+import $ from 'jquery';
 
-var _users = [];
+let _users = [];
 
 class UserStore extends BaseStore {
 	constructor() {
@@ -15,15 +16,15 @@ class UserStore extends BaseStore {
 
 	index() {
 		$.ajax({
-	    	type: 'GET',
-	    	url: this.url,
-	    	dataType: 'jsonp',
-	    	cache: false,
-	    	error: (xhr, status, err) => { console.error(this.url, status, err.toString()); }
-	    }).done(result => { 
-    		_users = result;    		
+			type: 'GET',
+			url: this.url,
+			dataType: 'jsonp',
+			cache: false,
+			error: (xhr, status, err) => { console.error(this.url, status, err.toString()); }
+		}).done(result => {
+			_users = result;
 			this.emitChange();
-    	});
+		});
 	}
 }
 

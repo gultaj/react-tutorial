@@ -20,8 +20,8 @@ export default class CommentForm extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		var author = parseInt(e.target.elements["author"].value);
-		var text = e.target.elements["text"].value.trim();
+		let author = parseInt(e.target.elements['author'].value);
+		let text = e.target.elements['text'].value.trim();
 		if (!text || !author) return;
 		CommentAction.create({user_id: author, text: text});
 		e.target.reset();

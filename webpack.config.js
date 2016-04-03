@@ -17,12 +17,19 @@ module.exports = {
     root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js', '.jsx']
   },
-  devtool: 'eval-source-map',
+  devtool: 'cheap-eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.js?$/,
+        loaders: ['eslint'],
+        include: [path.resolve(__dirname, 'src')]
+      }
+    ],
     loaders: [
       {
         test: /\.js?$/,

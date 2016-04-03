@@ -1,6 +1,7 @@
 import BaseStore from './BaseStore';
+import $ from 'jquery';
 
-var _comments = [];
+let _comments = [];
 
 class CommentStore extends BaseStore {
 
@@ -9,14 +10,14 @@ class CommentStore extends BaseStore {
 	}
 
 	index() {
-		var url = '//reactcomments.dev/comments';
+		const url = '//reactcomments.dev/comments';
 		$.ajax({
 			type: 'GET',
 			url: url,
 			dataType: 'jsonp',
 			cache: false,
-			success: result => { 
-				_comments = result;    		
+			success: result => {
+				_comments = result;
 				this.emitChange();
 			},
 			error: (xhr, status, err) => { console.error(url, status, err.toString()); }
@@ -24,13 +25,13 @@ class CommentStore extends BaseStore {
 	}
 
 	create(comment) {
-		var url = '//reactcomments.dev/comments';
+		const url = '//reactcomments.dev/comments';
 		$.ajax({
 			type: 'POST',
 			url: url,
 			data: comment,
-			success: result => { 
-				_comments = result;    		
+			success: result => {
+				_comments = result;
 				this.emitChange();
 			},
 			error: (xhr, status, err) => { console.error(url, status, err.toString()); }

@@ -1,7 +1,7 @@
 import AppDispatcher from 'dispatcher/AppDispatcher';
 import {AuthConst} from 'dispatcher/ConstDispatcher';
 
-var AuthAction = {
+const AuthAction = {
 	login: user => {
 		AppDispatcher.dispatch({
 			actionType: AuthConst.LOGIN,
@@ -18,6 +18,6 @@ var AuthAction = {
 			actionType: AuthConst.LOGOUT
 		});
 	}
-}
+};
 
 export default AuthAction;
