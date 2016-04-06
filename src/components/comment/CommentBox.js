@@ -11,8 +11,8 @@ export default class CommentBox extends Component {
 	}
 
 	componentDidMount() {
-	    CommentStore.addChangeListener(this._onChange.bind(this));
-	    CommentAction.index();
+		CommentStore.addChangeListener(this._onChange.bind(this));
+		CommentAction.index();
 	}
 
 	componentWillUnmount() {
@@ -21,10 +21,10 @@ export default class CommentBox extends Component {
 
 	render() {
 		return (
-			<div className="panel panel-default">
-				<div className="panel-heading">
-    				<h1 className="panel-title">Комментарии</h1>
-  				</div>
+			<div className='panel panel-default'>
+				<div className='panel-heading'>
+					<h1 className='panel-title'>Комментарии</h1>
+				</div>
 				<CommentList data={this.state.data} />
 				<CommentForm />
 			</div>
@@ -33,6 +33,6 @@ export default class CommentBox extends Component {
 
 	_onChange() {
 		if (this.updater.isMounted(this))
-	    	this.setState({data: CommentStore.comments});
-  	}
+			this.setState({data: CommentStore.comments});
+	}
 }

@@ -6,10 +6,10 @@ import About from './pages/About';
 import App from './App';
 
 export default (
-	<Route path="/" component={App}>
-		<IndexRoute component={CommentBox}/>
-		<Route path="/about" component={About}/>
-		<Route path="/auth/login" component={Login}/>
+	<Route path='/' component={App}>
+		<IndexRoute component={CommentBox} />
+		<Route path='/about' component={About} />
+		<Route path='/auth/login' component={Login}/>
 
 	</Route>
 );

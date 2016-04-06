@@ -10,8 +10,8 @@ export default class CommentForm extends Component {
 	}
 
 	componentDidMount() {
-	    UserStore.addChangeListener(this._onChange.bind(this));
-	    UserAction.index();
+		UserStore.addChangeListener(this._onChange.bind(this));
+		UserAction.index();
 	}
 
 	componentWillUnmount() {
@@ -29,20 +29,20 @@ export default class CommentForm extends Component {
 
 	render() {
 		return (
-			<div className="panel-footer">
-				<form className="commentForm" id="comment-form" onSubmit={this.handleSubmit.bind(this)}>
-	    			<div className="input-group">
-    					<select name="author" className="form-control w30">
-							<option value="0" key="0"></option>
+			<div className='panel-footer'>
+				<form className='commentForm' id='comment-form' onSubmit={this.handleSubmit.bind(this)}>
+					<div className='input-group'>
+						<select name='author' className='form-control w30'>
+							<option value='0' key='0'></option>
 							{ this.state.users.map(user => {
 								return (<option value={user.id} key={user.id}>{user.nickname}</option>);
 							} )}
 						</select>
-	      				<input type="text" className="form-control w70 ml-1" name="text" />
-      					<div className="input-group-btn">
-      						<input type="submit" className="btn btn-success ml-2" value="Отправить" />
-      					</div>
-    				</div>
+						<input type='text' className='form-control w70 ml-1' name='text' />
+						<div className='input-group-btn'>
+							<input type='submit' className='btn btn-success ml-2' value='Отправить' />
+						</div>
+					</div>
 				</form>
 			</div>
 		);

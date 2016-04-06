@@ -19,6 +19,6 @@ export default CommentAction;
 
 export function createComment(comment) {
 	return dispatch => {
-		
+		dispatch(comment);
 	}
 }
