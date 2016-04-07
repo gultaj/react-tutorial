@@ -16,6 +16,8 @@ export default function auth(state = inititalState, action) {
 			return {...state, fetching: true};
 		case AUTH.LOGIN_SUCCESS:
 			return {...state, currentUser: action.payload, fetching: false};
+		case AUTH.LOGIN_FAILURE:
+			return {...state, errorMessages: action.payload, fetching: false};
 		case AUTH.REGISTER_REQUEST:
 			return {...state, fetching: true};
 		case AUTH.REGISTER_SUCCESS:
