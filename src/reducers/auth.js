@@ -1,6 +1,6 @@
 import { AUTH } from '../constants/actionConstants';
 
-const inititalState = {
+export const inititalState = {
 	currentUser: {
 		id: 0,
 		nickname: 'Unknown',
