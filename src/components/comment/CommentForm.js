@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CommentAction from 'actions/CommentAction';
-import UserAction from 'actions/UserAction';
-import UserStore from 'stores/UserStore';
+// import CommentAction from 'actions/CommentAction';
+// import UserAction from 'actions/UserAction';
+// import UserStore from 'stores/UserStore';
 
 export default class CommentForm extends Component {
 	constructor() {
@@ -10,12 +10,12 @@ export default class CommentForm extends Component {
 	}
 
 	componentDidMount() {
-		UserStore.addChangeListener(this._onChange.bind(this));
-		UserAction.index();
+		// UserStore.addChangeListener(this._onChange.bind(this));
+		// UserAction.index();
 	}
 
 	componentWillUnmount() {
-		UserStore.removeChangeListener(this._onChange.bind(this));
+		// UserStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	handleSubmit(e) {
@@ -23,7 +23,7 @@ export default class CommentForm extends Component {
 		let author = parseInt(e.target.elements['author'].value);
 		let text = e.target.elements['text'].value.trim();
 		if (!text || !author) return;
-		CommentAction.create({user_id: author, text: text});
+		// CommentAction.create({user_id: author, text: text});
 		e.target.reset();
 	}
 
@@ -49,7 +49,8 @@ export default class CommentForm extends Component {
 	}
 
 	_onChange() {
-		if (this.updater.isMounted(this))
-			this.setState({users: UserStore.users});
+		if (this.updater.isMounted(this)) {
+			// this.setState({users: UserStore.users});
+		}
 	}
 }

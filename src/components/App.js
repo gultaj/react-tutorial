@@ -1,16 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import NavBar from './menu/NavBar';
 
-export default class App extends Component {
-	static propTypes = {
-		location: PropTypes.shape({
-			pathname: PropTypes.string
-		}),
-		children: PropTypes.element
-	};
 
+
+export default class App extends Component {
 	render() {
-		localStorage.setItem('currentRoute', this.props.location.pathname);
 		return (
 			<div className='wrapper'>
 				<NavBar />

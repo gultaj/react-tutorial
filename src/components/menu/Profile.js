@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavLink from './NavLink';
-import AuthStore from 'stores/AuthStore';
-import AuthAction from 'actions/AuthAction';
+// import AuthStore from 'stores/AuthStore';
+// import AuthAction from 'actions/AuthAction';
 
 export default class Profile extends Component {
   constructor() {
@@ -10,16 +10,16 @@ export default class Profile extends Component {
   }
 
   componentDidMount() {
-    AuthStore.addChangeListener(this._onChange.bind(this));
+    // AuthStore.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
-    AuthStore.removeChangeListener(this._onChange.bind(this));
+    // AuthStore.removeChangeListener(this._onChange.bind(this));
   }
 
   handleClick(e) {
     e.preventDefault();
-    AuthAction.logout();
+    // AuthAction.logout();
     return false;
   }
 
@@ -43,7 +43,7 @@ export default class Profile extends Component {
 	}
   _onChange() {
     if (this.updater.isMounted(this)) {
-      this.setState({currentUser: AuthStore.currentUser});
+      // this.setState({currentUser: AuthStore.currentUser});
     }
   }
 }

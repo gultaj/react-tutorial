@@ -1,38 +1,25 @@
 import React, {Component} from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import CommentAction from 'actions/CommentAction';
-import CommentStore from 'stores/CommentStore';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as postActions from 'actions/PostAction';
 
+@connect(
+	state => ({ post: state.post }),
+	dispatch => ({ postActions: bindActionCreators(postActions, dispatch) })
+)
 export default class CommentBox extends Component {
-	constructor() {
-		super();
-		this.state = {data: []};
-	}
-
-	componentDidMount() {
-		CommentStore.addChangeListener(this._onChange.bind(this));
-		CommentAction.index();
-	}
-
-	componentWillUnmount() {
-		CommentStore.removeChangeListener(this._onChange.bind(this));
-	}
-
 	render() {
+		const { post, postActions } = this.props;
 		return (
 			<div className='panel panel-default'>
 				<div className='panel-heading'>
 					<h1 className='panel-title'>Комментарии</h1>
 				</div>
-				<CommentList data={this.state.data} />
+				<CommentList posts={post.posts} actions={postActions} />
 				<CommentForm />
 			</div>
 		);
-	}
-
-	_onChange() {
-		if (this.updater.isMounted(this))
-			this.setState({data: CommentStore.comments});
 	}
 }

@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import AuthAction from 'actions/AuthAction';
-import AuthStore from 'stores/AuthStore';
+// import AuthAction from 'actions/AuthAction';
+// import AuthStore from 'stores/AuthStore';
 
 export default class Login extends Component {
 
 	componentDidMount() {
-		AuthStore.addChangeListener(this._onChange.bind(this));
+		// AuthStore.addChangeListener(this._onChange.bind(this));
 	}
 
 	componentWillUnmount() {
-		AuthStore.removeChangeListener(this._onChange.bind(this));
+		// AuthStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	handleSubmit(e) {
@@ -19,7 +19,7 @@ export default class Login extends Component {
 		if (!email || !password) {
 			return;
 		}
-		AuthAction.login({email: email, password: password});
+		// AuthAction.login({email: email, password: password});
 	}
 
 	render() {

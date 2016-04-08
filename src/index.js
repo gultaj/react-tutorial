@@ -5,7 +5,6 @@ import { Router, browserHistory } from 'react-router';
 import configStore from './stores/configStore';
 import routes from 'components/routes';
 import { syncHistoryWithStore } from 'react-router-redux';
-import DevTools from './utils/DevTools';
 
 const store = configStore();
 
@@ -14,7 +13,6 @@ const history = syncHistoryWithStore(browserHistory, store);
 render(
 	<Provider store={store}>
 		<Router routes={routes} history={history} />
-		<DevTools />
 	</Provider>,
 	document.getElementById('app')
 );

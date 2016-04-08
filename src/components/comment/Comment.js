@@ -14,7 +14,7 @@ export default class Comment extends Component {
 				</div>
 				<div className='media-body'>
 					<h4 className='commentAuthor media-heading'>{this.props.author}</h4>
-					{this.props.children}
+					{this.props.text}
 				</div>
 			</div>
 		);

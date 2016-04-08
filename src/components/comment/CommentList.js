@@ -3,16 +3,24 @@ import Comment from './Comment';
 
 export default class CommentList extends Component {
 	static propTypes = {
-		data: PropTypes.array
+		posts: PropTypes.array
 	};
 
+	componentWillMount() {
+		this.props.actions.getAllPosts();
+	}
+
 	render() {
-		return (
-			<div className='CommentList panel-body'>
-				{this.props.data.map((comment) => {
-					return (<Comment author={comment.author.nickname} key={comment.id}>{comment.text}</Comment>);
-				})}
-			</div>
-		);
+		const { posts } = this.props;
+		if (posts.length) {
+			return (
+				<div className='CommentList panel-body'>
+					{posts.map((comment) => {
+						return (<Comment author={comment.author.nickname}  text={comment.text} key={comment.id} />);
+					})}
+				</div>
+			);
+		}
+		return <div></div>;
 	}
 }
