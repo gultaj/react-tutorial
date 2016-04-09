@@ -14,11 +14,11 @@ export default class CommentList extends Component {
 		const { posts } = this.props;
 		if (posts.length) {
 			return (
-				<div className='CommentList panel-body'>
+				<ul className='collection'>
 					{posts.map((comment) => {
 						return (<Comment author={comment.author.nickname}  text={comment.text} key={comment.id} />);
 					})}
-				</div>
+				</ul>
 			);
 		}
 		return <div></div>;

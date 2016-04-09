@@ -10,6 +10,9 @@ module.exports = {
     'babel-polyfill',
     './src/index'
   ],
+  resolve: {
+    root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -34,13 +37,8 @@ module.exports = {
         test: /\.js$/,
         plugins: ['transform-runtime'],
       },
-      {
-        test: /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
-      }
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
-  },
-  postcss: function() {
-    return [autoprefixer, precss];
   }
 };

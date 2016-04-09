@@ -1,5 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 
+const styles = {
+	paddingRight: 25
+};
+
 export default class Comment extends Component {
 	static propTypes = {
 		author: PropTypes.string,
@@ -8,15 +12,12 @@ export default class Comment extends Component {
 
 	render() {
 		return (
-			<div className='comment media'>
-				<div className='media-left'>
-					<a href='#'><img className='media-object' /></a>
-				</div>
-				<div className='media-body'>
-					<h4 className='commentAuthor media-heading'>{this.props.author}</h4>
-					{this.props.text}
-				</div>
-			</div>
+			<li className='collection-item avatar'>
+				<i className='material-icons circle'>perm_identity</i>
+				<span className='title'><strong>{this.props.author}</strong></span>
+				<p style={styles}>{this.props.text}</p>
+				<a href='#!' className='secondary-content'><i className='material-icons'>thumb_up</i></a>
+			</li>
 		);
 	}
 }
