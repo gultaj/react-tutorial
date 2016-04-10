@@ -12,7 +12,7 @@ import 'materialize-css/dist/js/materialize.min.js';
 // import 'materialize-css/dist/font/material-design-icons/Material-Design-Icons.woff2';
 // import 'materialize-css/js/init.js';
 
-const store = configStore();
+export const store = configStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 

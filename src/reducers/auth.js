@@ -1,7 +1,7 @@
 import { AUTH } from '../constants/actionConstants';
 
 export const inititalState = {
-	currentUser: {
+	user: {
 		id: 0,
 		nickname: 'Unknown',
 		token: ''
@@ -15,7 +15,7 @@ export default function auth(state = inititalState, action) {
 		case AUTH.LOGIN_REQUEST:
 			return {...state, fetching: true};
 		case AUTH.LOGIN_SUCCESS:
-			return {...state, currentUser: action.payload, fetching: false};
+			return {...state, user: action.payload, fetching: false};
 		case AUTH.LOGIN_FAILURE:
 			return {...state, errorMessages: action.payload, fetching: false};
 		case AUTH.REGISTER_REQUEST:

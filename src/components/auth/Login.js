@@ -40,7 +40,7 @@ export default class Login extends Component {
 							<div className='checkbox'>
 								<label><input name='remember' type='checkbox' value='Remember Me' />Remember Me</label>
 							</div>
-							<button type='sybmit' className='btn btn-sm btn-success'>Login</button>
+							<button type='sybmit' className='btn blue btn-sm btn-success'>Login</button>
 						</fieldset>
 					</form>
 				</div>

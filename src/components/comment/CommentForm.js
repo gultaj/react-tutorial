@@ -30,7 +30,7 @@ export default class CommentForm extends Component {
 	render() {
 		return (
 			<div className='panel-footer'>
-				<form className='commentForm' id='comment-form' onSubmit={this.handleSubmit.bind(this)}>
+				<form className='commentForm blue' id='comment-form' onSubmit={this.handleSubmit.bind(this)}>
 					<div className='input-group'>
 						<select name='author' className='form-control w30'>
 							<option value='0' key='0'></option>
@@ -38,9 +38,9 @@ export default class CommentForm extends Component {
 								return (<option value={user.id} key={user.id}>{user.nickname}</option>);
 							} )}
 						</select>
-						<input type='text' className='form-control w70 ml-1' name='text' />
+						<input type='text' className='form-control blue w70 ml-1' name='text' />
 						<div className='input-group-btn'>
-							<input type='submit' className='btn btn-success ml-2' value='Отправить' />
+							<input type='submit' className='btn blue btn-success ml-2' value='Отправить' />
 						</div>
 					</div>
 				</form>
