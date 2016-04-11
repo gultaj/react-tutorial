@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 // import AuthAction from 'actions/AuthAction';
 // import AuthStore from 'stores/AuthStore';
 
+const styles = {
+	wrapper: {
+		justifyContent: 'space-between',
+		alignItems: 'baseline'
+	},
+	link: {
+		fontSize: 20
+	}
+};
+
+
+
 export default class Login extends Component {
-
-	componentDidMount() {
-		// AuthStore.addChangeListener(this._onChange.bind(this));
-	}
-
-	componentWillUnmount() {
-		// AuthStore.removeChangeListener(this._onChange.bind(this));
-	}
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -25,32 +30,29 @@ export default class Login extends Component {
 	render() {
 		return (
 			<div className='modal-content form-signin'>
-				<div className='panel-heading'>
-					<h3 className='panel-title'>Sign In</h3>
+			{this.props.children}
+				<div className='valign-wrapper' style={styles.wrapper}>
+					<h3 className=''>Sign In</h3>
+					<Link to='/auth/register' className='valign' style={styles.link}>Register</Link>
 				</div>
-				<div className='panel-body'>
+				<div className='panel-body card-panel lighten-5 z-depth-1'>
 					<form role='form' id='login-form' onSubmit={this.handleSubmit.bind(this)}>
-						<fieldset>
-							<div className='form-group'>
-								<input className='form-control' placeholder='E-mail' name='email' type='email'a />
-							</div>
-							<div className='form-group'>
-								<input className='form-control' placeholder='Password' name='password' type='password' />
-							</div>
-							<div className='checkbox'>
-								<label><input name='remember' type='checkbox' value='Remember Me' />Remember Me</label>
-							</div>
-							<button type='sybmit' className='btn blue btn-sm btn-success'>Login</button>
-						</fieldset>
+						<div className='input-field'>
+							<input className='' id='email' name='email' type='text' />
+							<label htmlFor='email'>E-mail</label>
+						</div>
+						<div className='input-field'>
+							<input className='' id='password' name='password' type='password' />
+							<label htmlFor='password'>Password</label>
+						</div>
+						<p className='checkbox'>
+							<input name='remember' type='checkbox' id='remember' /><label htmlFor='remember'>Remember Me</label>
+						</p>
+						<p className='center-align'><button type='sybmit' className='btn blue'>Login</button></p>
 					</form>
 				</div>
 			</div>		
 		);
 	}
 
-	_onChange() {
-		if (this.updater.isMounted(this)) {
-			// this.setState();
-		}
-	}
 }

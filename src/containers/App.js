@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 // import NavBar from './menu/NavBar';
 import {Link} from 'react-router';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-@connect(
-	state => ({ user: state.user })
-)
 export default class App extends Component {
 	render() {
 		return (

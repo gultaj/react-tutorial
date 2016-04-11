@@ -2,8 +2,10 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import CommentBox from './comment/CommentBox';
 import Login from './auth/Login';
+import Register from './auth/Register';
 import About from './pages/About';
-import App from './App';
+import App from 'containers/App';
+import Auth from 'containers/Auth';
 import {requireAuth} from 'middlewares/auth';
 
 export default (
@@ -11,7 +13,10 @@ export default (
 		<Route path='/' component={App} >
 			<IndexRoute component={CommentBox} onEnter={requireAuth} />
 			<Route path='/about' component={About}/>
-			<Route path='/auth/login' component={Login}/>
+			<Route path='auth' component={Auth}>
+				<Route path='login' component={Login} />
+				<Route path='register' component={Register} />
+			</Route>
 
 		</Route>
 );
