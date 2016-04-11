@@ -11,6 +11,7 @@ module.exports = {
     './src/index'
   ],
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
   },
   output: {
@@ -37,6 +38,7 @@ module.exports = {
         test: /\.js$/,
         plugins: ['transform-runtime'],
       },
+      { test: /\.jsx$/, exclude: /(node_modules|bower_components)/, loaders: ['react-hot', 'babel-loader']},
       { test: /\.css$/, loader: "style-loader!css-loader" },
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
