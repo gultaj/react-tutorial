@@ -1,23 +1,27 @@
-// import AppDispatcher from 'dispatcher/AppDispatcher';
-// import {AuthConst} from 'dispatcher/ConstDispatcher';
+import { AUTH, URL_API } from '../constants/actionConstants';
 
-const AuthAction = {
-	// login: user => {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: AuthConst.LOGIN,
-	// 		user: user
-	// 	});
-	// },
-	// register: () => {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: AuthConst.REGISTER
-	// 	});
-	// },
-	// logout: () => {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: AuthConst.LOGOUT
-	// 	});
-	// }
-};
+function checkStatus(response) {
+	return response.json().then(json => 
+		response.ok ? json : Promise.reject(json)
+	);
+}
 
-export default AuthAction;
+export function login(userData, redirect = null) {
+	return (dispatch) => {
+		dispatch({ type: AUTH.LOGIN_REQUEST });
+
+		fetch(`${URL_API}/auth/login`,{
+			method: 'POST',
+			body: userData
+		}).then(checkStatus).then(user => {
+			dispatch({
+				type: AUTH.LOGIN_SUCCESS, 
+				payload: user
+			});
+			if (redirect) redirect();
+		}).catch(error => dispatch({
+			type: AUTH.LOGIN_FAILURE,
+			payload: Array.isArray(error) ? error : ['error']
+		}));
+	}
+}

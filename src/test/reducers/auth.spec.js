@@ -18,7 +18,7 @@ describe('reducers', () => {
 
 			it(`should handle ${AUTH.LOGIN_FAILURE} action`, () => {
 				expect(auth(inititalState, {type: AUTH.LOGIN_FAILURE, payload: 'Error'}))
-					.toEqual({...inititalState, errorMessages: 'Error'});
+					.toEqual({...inititalState, errorMessages: 'Error', fetching: false});
 			});
 
 			it(`should handle ${AUTH.LOGIN_SUCCESS} action`, () => {

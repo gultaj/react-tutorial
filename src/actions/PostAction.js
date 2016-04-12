@@ -1,6 +1,4 @@
-import { POST } from '../constants/actionConstants';
-
-const URL_API = '//reactcomments.dev';
+import { POST, URL_API } from '../constants/actionConstants';
 
 export function getAllPosts() {
 	return (dispatch) => {

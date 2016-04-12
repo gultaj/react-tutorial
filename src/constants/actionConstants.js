@@ -1,18 +1,4 @@
-export const CommentConst = {
-	CREATE: 'comment.create',
-	INDEX: 'comment.index'
-};
-
-export const UserConst = {
-	INDEX: 'user.index'
-};
-
-export const AuthConst = {
-	'LOGIN': 'auth.login',
-	'REGISTER': 'auth.register',
-	'RESET': 'auth.reset',
-	'LOGOUT': 'auth.logout'
-};
+export const URL_API = '//reactcomments.dev';
 
 export const POST = {
 	CREATE_REQUEST: 'POST.CREATE_REQUEST',

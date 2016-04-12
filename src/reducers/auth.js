@@ -4,10 +4,10 @@ export const inititalState = {
 	user: {
 		id: 0,
 		nickname: 'Unknown',
-		token: ''
+		remember_token: ''
 	},
 	fetching: false,
-	errorMessages: {}
+	errorMessages: []
 };
 
 export default function auth(state = inititalState, action) {
