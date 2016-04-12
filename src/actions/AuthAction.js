@@ -1,4 +1,5 @@
 import { AUTH, URL_API } from '../constants/actionConstants';
+import { browserHistory } from 'react-router';
 
 function checkStatus(response) {
 	return response.json().then(json => 
@@ -6,7 +7,7 @@ function checkStatus(response) {
 	);
 }
 
-export function login(userData, redirect = null) {
+export function login(userData, redirectTo = null) {
 	return (dispatch) => {
 		dispatch({ type: AUTH.LOGIN_REQUEST });
 
@@ -18,7 +19,7 @@ export function login(userData, redirect = null) {
 				type: AUTH.LOGIN_SUCCESS, 
 				payload: user
 			});
-			if (redirect) redirect();
+			if (redirectTo) browserHistory.push(redirectTo);
 		}).catch(error => dispatch({
 			type: AUTH.LOGIN_FAILURE,
 			payload: Array.isArray(error) ? error : ['error']

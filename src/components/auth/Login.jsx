@@ -10,24 +10,16 @@ export default class Login extends Component {
 		errorMessages: PropTypes.array
 	};
 
-	constructor(props, context) {
-		super(props, context);
-	}
-
-	redirect() {
-		this.props.history.pushState({}, '/');
-	}
 
 	handleSubmit(e) {
 		e.preventDefault();
 		const userData = new FormData(this.refs.loginForm);
-		this.props.actions.login(userData, () => {this.props.history.pushState({}, '/')});
+		this.props.actions.login(userData, '/');
 		this.refs.loginPass.value = '';
 	}
 
 	render() {
 		const {auth} = this.props;
-		console.log(this.context);
 		return (
 			<div className='form-signin'>
 				<div className='valign-wrapper' style={styles.wrapper}>

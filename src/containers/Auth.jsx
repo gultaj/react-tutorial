@@ -9,8 +9,6 @@ import * as authActions from 'actions/AuthAction';
 )
 class Auth extends Component {
 	render() {
-	console.log(this.context);
-		// console.log('auth', this.props.authActions);
 		const {auth, authActions} = this.props;
 		const childrenWithProps = React.Children.map(this.props.children,
       		(child) => React.cloneElement(child, { auth: auth, actions: authActions })
