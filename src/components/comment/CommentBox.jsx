@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
+import Preloader from '../Preloader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as postActions from 'actions/PostAction';
@@ -18,7 +19,7 @@ export default class CommentBox extends Component {
 					<h1 className='panel-title'>Комментарии</h1>
 				</div>
 				<CommentList posts={post.posts} actions={postActions} />
-				<CommentForm />
+				<Preloader visible={post.fetching} />
 			</div>
 		);
 	}

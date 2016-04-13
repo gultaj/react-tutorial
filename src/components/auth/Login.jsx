@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import AuthError from './AuthError';
 import {styles} from './styles/auth';
+import Preloader from '../Preloader';
 
 export default class Login extends Component {
 	static propTypes = {
@@ -27,7 +28,7 @@ export default class Login extends Component {
 					<Link to='/auth/register' className='valign' style={styles.link}>Register</Link>
 				</div>
 				<AuthError messages={auth.errorMessages} />
-				<div className='card-panel z-depth-1'>
+				<div className='card-panel z-depth-1' style={{position:'relative'}}>
 					<form role='form' ref='loginForm' onSubmit={::this.handleSubmit}>
 						<div className='input-field'>
 							<input id='email' name='email' ref='loginEmail' type='text' required />
@@ -43,6 +44,7 @@ export default class Login extends Component {
 						</p>
 						<p className='center-align'><button type='submit' className='btn blue'>Login</button></p>
 					</form>
+					<Preloader visible={auth.fetching} />
 				</div>
 			</div>		
 		);
