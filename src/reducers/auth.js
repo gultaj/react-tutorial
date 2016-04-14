@@ -7,7 +7,7 @@ export const inititalState = {
 		remember_token: ''
 	},
 	fetching: false,
-	errorMessages: []
+	errorMessage: ''
 };
 
 export default function auth(state = inititalState, action) {
@@ -17,7 +17,7 @@ export default function auth(state = inititalState, action) {
 		case AUTH.LOGIN_SUCCESS:
 			return {...state, user: action.payload, fetching: false};
 		case AUTH.LOGIN_FAILURE:
-			return {...state, errorMessages: action.payload, fetching: false};
+			return {...state, errorMessage: action.payload, fetching: false};
 		case AUTH.REGISTER_REQUEST:
 			return {...state, fetching: true};
 		case AUTH.REGISTER_SUCCESS:

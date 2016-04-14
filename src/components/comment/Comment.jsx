@@ -1,7 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 
 const styles = {
-	paddingRight: 25
+	display: 'inline-block',
+	width: '100%',
+	verticalAlign: 'top',
+	float: 'none'
 };
 
 export default class Comment extends Component {
@@ -12,12 +15,17 @@ export default class Comment extends Component {
 
 	render() {
 		return (
-			<li className='collection-item avatar'>
-				<i className='material-icons circle'>perm_identity</i>
-				<span className='title'><strong>{this.props.author}</strong></span>
-				<p style={styles}>{this.props.text}</p>
-				<a href='#!' className='secondary-content'><i className='material-icons'>thumb_up</i></a>
-			</li>
+			<div className='col m6' style={styles}>
+				<div className='card'>
+					<div className='card-content'>
+						<span className='card-title activator grey-text text-darken-4'>Card Title</span>
+						<p>{this.props.text}</p>
+					</div>
+					<div className='card-action'>
+						<i className='material-icons circle'>perm_identity</i>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }

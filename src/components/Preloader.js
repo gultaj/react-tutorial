@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 const styles = {
 	wrapper: {
@@ -23,6 +23,13 @@ const styles = {
 };
 
 export default class Comment extends Component {
+	static propTypes = {
+		visible: PropTypes.bool
+	};
+	static defaultProps = {
+		visible: false
+	};
+
 	render() {
 		if (this.props.visible) {
 			return (

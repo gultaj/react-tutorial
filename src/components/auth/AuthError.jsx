@@ -2,15 +2,17 @@ import React, {Component, PropTypes} from 'react';
 
 export default class AuthError extends Component {
 	static propTypes = {
-		messages: PropTypes.array
+		message: PropTypes.string
 	};
 
 	render() {
-		const { messages } = this.props;
-		if (messages.length) {
-			return (<div className='card-panel red lighten-2'>{messages.map((message, i) => (
-				<span className='white-text' key={i}>{message}</span>)
-			)}</div>);
+		const { message } = this.props;
+		if (message.length) {
+			return (
+				<div className='card-panel red lighten-2'>
+					<span className='white-text'>{message}</span>
+				</div>
+			);
 		}
 		return null;
 	}

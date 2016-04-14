@@ -8,7 +8,7 @@ export default class Login extends Component {
 	static propTypes = {
 		user: PropTypes.object,
 		fetching: PropTypes.bool,
-		errorMessages: PropTypes.array
+		errorMessage: PropTypes.string
 	};
 
 
@@ -27,7 +27,7 @@ export default class Login extends Component {
 					<h3 className=''>Sign In</h3>
 					<Link to='/auth/register' className='valign' style={styles.link}>Register</Link>
 				</div>
-				<AuthError messages={auth.errorMessages} />
+				<AuthError message={auth.errorMessage} />
 				<div className='card-panel z-depth-1' style={{position:'relative'}}>
 					<form role='form' ref='loginForm' onSubmit={::this.handleSubmit}>
 						<div className='input-field'>
@@ -44,7 +44,7 @@ export default class Login extends Component {
 						</p>
 						<p className='center-align'><button type='submit' className='btn blue'>Login</button></p>
 					</form>
-					<Preloader visible={auth.fetching} />
+					<Preloader visible={true} />
 				</div>
 			</div>		
 		);
