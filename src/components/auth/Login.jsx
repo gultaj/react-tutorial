@@ -44,7 +44,7 @@ export default class Login extends Component {
 						</p>
 						<p className='center-align'><button type='submit' className='btn blue'>Login</button></p>
 					</form>
-					<Preloader visible={true} />
+					<Preloader visible={auth.fetching} />
 				</div>
 			</div>		
 		);

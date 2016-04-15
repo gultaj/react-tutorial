@@ -16,8 +16,11 @@ const styles = {
 		opacity: 0.5
 	},
 	circle: {
-		left: '50vw',
-		top: '50vh',
+		left: 0,
+		top: 0,
+		right: 0,
+		bottom: 0,
+		margin: 'auto',
 		position: 'absolute'
 	}
 };
