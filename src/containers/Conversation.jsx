@@ -15,7 +15,10 @@ class Conversation extends Component {
 	render() {
 		const {conversations, conversationActions} = this.props;
 		console.log(conversations);
-		return <div>conversations</div>;
+		return <div>
+			{conversations.each(conv => <p>{conv.})}
+
+		</div>;
 	}
 }
 
