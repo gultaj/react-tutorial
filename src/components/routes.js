@@ -5,6 +5,7 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import About from './pages/About';
 import App from 'containers/App';
+import Conversation from 'containers/Conversation';
 import Auth from 'containers/Auth';
 import {requireAuth} from 'middlewares/auth';
 
@@ -17,6 +18,7 @@ export default (
 				<Route path='login' component={Login} />
 				<Route path='register' component={Register} />
 			</Route>
+			<Route path='/conversations/:user_id' component={Conversation} />
 
 		</Route>
 );
