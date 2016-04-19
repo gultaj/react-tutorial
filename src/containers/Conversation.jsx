@@ -13,12 +13,14 @@ class Conversation extends Component {
 	}
 
 	render() {
-		const {conversations, conversationActions} = this.props;
-		console.log(conversations);
-		return <div>
-			{conversations.each(conv => <p>{conv.})}
-
-		</div>;
+		const {conversation, conversationActions} = this.props;
+		// console.log(conversation);
+		if (conversation.conversations.length) {
+			return <div>
+				{conversation.conversations.map((conv, i) => <p key={i}>{conv.user.nickname}</p>)}
+			</div>;
+		}
+		return null;
 	}
 }
 
