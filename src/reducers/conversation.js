@@ -13,6 +13,11 @@ export default function conversation(state = inititalState, action) {
 			return {...state, fetching: true};
 		case CONVERSATION.GET_BY_USER_SUCCESS:
 			return {...state, conversations: action.payload, fetching: false};
+		case CONVERSATION.GET_MESSAGES_REQUEST:
+			return {...state, fetching: true};
+		case CONVERSATION.GET_MESSAGES_SUCCESS:
+			return {...state, messages: action.payload, fetching: false};
+		case CONVERSATION.GET_MESSAGES_FAILURE:
 		case CONVERSATION.GET_BY_USER_FAILURE:
 			return {...state, errorMessage: action.payload, fetching: false};
 		default:

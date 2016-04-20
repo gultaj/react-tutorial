@@ -11,16 +11,39 @@ class Conversation extends Component {
 	componentWillMount() {
 	 	this.props.conversationActions.getConversations(this.props.params.user_id);    
 	}
+	handleClick(event) {
+		event.preventDefault();
+		const id = event.target.dataset.id;
+		this.props.conversationActions.getMessages(+id);
+	}
 
 	render() {
 		const {conversation, conversationActions} = this.props;
 		// console.log(conversation);
 		if (conversation.conversations.length) {
-			return <div>
-				{conversation.conversations.map((conv, i) => <p key={i}>{conv.user.nickname}</p>)}
-			</div>;
+			return (
+				<div className='row'>
+					<div className='col m2'>
+						<div className='collection'>
+							{conversation.conversations.map((conv) => {
+								return <a key={conv.id} data-id={conv.id} href='#' onClick={::this.handleClick} className='collection-item'>{conv.user.nickname}</a>;
+							})}
+						</div>
+					</div>
+					<div className='col m10'>
+					{ conversation.messages.length ?
+						conversation.messages.map((message, i) =>
+							(<div key={i} className='card blue-grey darken-1'>
+	            				<div className='card-content white-text'>
+	              					<p>{message.message}</p>
+	            				</div>
+	          				</div>)
+						) : ''}
+					</div>
+				</div>
+			);
 		}
-		return null;
+		return <div></div>;
 	}
 }
 

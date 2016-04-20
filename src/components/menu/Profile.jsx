@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavLink from './NavLink';
+// import NavLink from './NavLink';
 // import AuthStore from 'stores/AuthStore';
 // import AuthAction from 'actions/AuthAction';
 
@@ -26,7 +26,7 @@ export default class Profile extends Component {
 	render() {
     return (
       !this.state.currentUser ? (
-        <NavLink to='/auth/login' title='Login' />
+        // <NavLink to='/auth/login' title='Login' />
       ) : (
         <li className='dropdown'>
           <a href='#' className='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
