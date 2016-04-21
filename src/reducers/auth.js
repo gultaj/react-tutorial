@@ -12,6 +12,8 @@ export const inititalState = {
 
 export default function auth(state = inititalState, action) {
 	switch (action.type) {
+		case '@@router/LOCATION_CHANGE':
+			return {...state, errorMessage: ''};
 		case AUTH.LOGIN_REQUEST:
 			return {...state, errorMessage: '', fetching: true};
 		case AUTH.LOGIN_SUCCESS:
