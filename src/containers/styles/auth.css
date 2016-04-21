@@ -1,0 +1,11 @@
+.auth-form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+.form-signin {
+	min-width: 430px;
+	padding: 15px;
+	margin: 0 auto;
+}

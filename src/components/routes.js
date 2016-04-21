@@ -11,14 +11,15 @@ import {requireAuth} from 'middlewares/auth';
 
 export default (
 
-		<Route path='/' component={App} >
+	<Route path='/' >
+		<Route component={App}>
 			<IndexRoute component={CommentBox} onEnter={requireAuth} />
 			<Route path='/about' component={About}/>
-			<Route path='auth' component={Auth}>
-				<Route path='login' component={Login} />
-				<Route path='register' component={Register} />
-			</Route>
 			<Route path='/conversations/:user_id' component={Conversation} />
-
 		</Route>
+		<Route path='/auth' component={Auth}>
+			<Route path='login' component={Login} />
+			<Route path='register' component={Register} />
+		</Route>
+	</Route>
 );

@@ -23,7 +23,6 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className='wrapper'>
-							
 				<NavBar />		
 				<div className='row' style={styles.wrapper}>
 					<div className='col m2 fixed' style={styles.menu}>

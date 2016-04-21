@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as authActions from 'actions/AuthAction';
+import './styles/auth.css';
 
 @connect(
 	state => ({ auth: state.auth }),
@@ -13,7 +14,7 @@ class Auth extends Component {
 		const childrenWithProps = React.Children.map(this.props.children,
       		(child) => React.cloneElement(child, { auth: auth, actions: authActions })
       	);
-		return <div>{childrenWithProps}</div>;
+		return <div className='auth-form'>{childrenWithProps}</div>;
 	}
 }
 
