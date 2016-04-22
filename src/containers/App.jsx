@@ -21,6 +21,9 @@ const styles = {
 };
 
 export default class App extends Component {
+	componentWillMount() {
+	    console.log('mount')  ;
+	}
 	render() {
 		const { location } = this.props;
 		return (

@@ -15,7 +15,7 @@ import 'materialize-css/dist/js/materialize.min.js';
 export const store = configStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
-
+console.log('render');
 render(
 	<Provider store={store}>
 		<Router routes={routes} history={history} />

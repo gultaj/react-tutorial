@@ -3,8 +3,22 @@ import React, { Component } from 'react';
 // import Profile from './Profile';
 import { Link } from 'react-router';
 import './styles/navbar.css';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as authActions from 'actions/AuthAction';
 
+@connect(
+	state => ({ auth: state.auth }),
+	dispatch => ({ authActions: bindActionCreators(authActions, dispatch) })
+)
 export default class Navbar extends Component {
+	handleLogout() {
+		const {token} = this.props.auth;
+		var data = new FormData();
+		data.append('token', token)
+		this.props.authActions.logout(data);
+	}
+
 	render() {
 		return (
 			<nav className='blue navbar'>
@@ -19,7 +33,7 @@ export default class Navbar extends Component {
 						<li><Link to='/'>Home</Link></li>
 						<li><Link to='/about'>About</Link></li>
 						<li><a href='badges'>Components</a></li>
-						<li><a href='collapsible'>JavaScript</a></li>
+						<li><a onClick={::this.handleLogout}>Logout</a></li>
 					</ul>
 				</div>
 			</nav>
