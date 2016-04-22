@@ -12,7 +12,7 @@ export default class Navbar extends Component {
 					<a className='btn-floating btn-large waves-effect blue z-depth-0'><i className='menu-icon tiny material-icons'>menu</i></a>	
 					<div className='brand-logo'>
 						<Link to='/' className='brand-link'>Logo</Link>
-						<span className='brand-title'>Conversation</span>
+						<span className='brand-title'>Conversations</span>
 					</div>
 
 					<ul id='nav-mobile' className='right hide-on-med-and-down'>

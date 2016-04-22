@@ -14,7 +14,12 @@ class Auth extends Component {
 		const childrenWithProps = React.Children.map(this.props.children,
       		(child) => React.cloneElement(child, { auth: auth, actions: authActions })
       	);
-		return <div className='auth-form'>{childrenWithProps}</div>;
+		return (
+			<div>
+				<h2 className='brand-title-auth'>Logo+</h2> 
+				<div className='auth-form'>{childrenWithProps}</div>;
+			</div>
+		)
 	}
 }
 

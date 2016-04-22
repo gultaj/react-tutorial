@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
+import Menu from 'components/menu/Menu';
 import {Link} from 'react-router';
 // import { connect } from 'react-redux';
 
@@ -21,17 +22,13 @@ const styles = {
 
 export default class App extends Component {
 	render() {
+		const { location } = this.props;
 		return (
 			<div className='wrapper'>
 				<NavBar />		
 				<div className='row' style={styles.wrapper}>
 					<div className='col m2 fixed' style={styles.menu}>
-						<div className='collection' style={styles.collection}>
-							<a href='#!' className='collection-item'>Alvin</a>
-							<a href='#!' className='collection-item active'>Alvin</a>
-							<a href='#!' className='collection-item'>Alvin</a>
-							<a href='#!' className='collection-item'>Alvin</a>
-						</div>
+						<Menu currentRoute={location.pathname} />
 					</div>
 					<div className='col m10 offset-m2'>
 						<div className='container'>{this.props.children}</div>
