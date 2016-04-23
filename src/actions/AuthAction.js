@@ -17,6 +17,9 @@ export function login(userData, redirectTo = '/') {
 					token: data.user.remember_token
 				});
 				Cookie.set('token', data.user.remember_token, {path: '/'});
+				if (userData.get('remember')) {
+					localStorage.setItem('token', data.user.remember_token);
+				}
 				browserHistory.push(redirectTo);
 			} else {
 				throw new Error(data.message);
@@ -39,6 +42,7 @@ export function logout(data, redirectTo = '/auth/login') {
 			if (data.success) {
 				dispatch({type: AUTH.LOGOUT_SUCCESS});
 				Cookie.delete('token');
+				localStorage.removeItem('token')
 				browserHistory.push(redirectTo);
 			} else {
 				throw new Error(data.message);

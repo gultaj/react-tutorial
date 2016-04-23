@@ -20,11 +20,8 @@ export default class Cookie {
     if (expires && expires.toUTCString) {
       options.expires = expires.toUTCString();
     }
-
     value = encodeURIComponent(value);
-
     var updatedCookie = name + '=' + value;
-
     for (var propName in options) {
       updatedCookie += '; ' + propName;
       var propValue = options[propName];
@@ -32,14 +29,11 @@ export default class Cookie {
         updatedCookie += '=' + propValue;
       }
     }
-
     document.cookie = updatedCookie;
   }
 
   // удаляет cookie с именем name
   static delete(name) {
-    this.setCookie(name, '', {
-      expires: -1
-    })
+    this.set(name, '', {expires: -1})
   }
 }

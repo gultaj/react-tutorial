@@ -9,9 +9,6 @@ import './styles/auth.css';
 	dispatch => ({ authActions: bindActionCreators(authActions, dispatch) })
 )
 class Auth extends Component {
-	componentWillMount() {
-	    console.log('mount')  ;
-	}
 	render() {
 		const {auth, authActions} = this.props;
 		const childrenWithProps = React.Children.map(this.props.children,
