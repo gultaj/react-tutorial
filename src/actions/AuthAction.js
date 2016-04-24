@@ -58,7 +58,7 @@ export function register(userData, redirectTo = '/auth/login') {
 	return (dispatch) => {
 		dispatch({ type: AUTH.REGISTER_REQUEST });
 
-		fetch(`${URL_API}/auth/register`,{
+		fetch(`${URL_API}/auth/register`, {
 			method: 'POST',
 			body: userData
 		}).then(response => response.json()).then(data => {
@@ -66,7 +66,6 @@ export function register(userData, redirectTo = '/auth/login') {
 				dispatch({type: AUTH.REGISTER_SUCCESS});
 				browserHistory.push(redirectTo);
 			} else {
-				console.log(data);
 				throw new Error(data.message);
 			}
 		}).catch(error => dispatch({

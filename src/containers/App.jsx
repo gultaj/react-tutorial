@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Menu from 'components/menu/Menu';
 import {Link} from 'react-router';
+import { store } from 'index';
+import * as AppActions from 'actions/AppAction';
 // import { connect } from 'react-redux';
 
 const styles = {
@@ -20,10 +22,11 @@ const styles = {
 	}
 };
 
+// @connect(null, dispatch => ({ authActions: bindActionCreators(authActions, dispatch) }))
 export default class App extends Component {
-	componentWillMount() {
-	    console.log('mount')  ;
-	}
+	// componentWillMount() {
+	//     store.dispatch(AppActions.setInitialState());
+	// }
 	render() {
 		const { location } = this.props;
 		return (
