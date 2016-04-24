@@ -9,11 +9,17 @@ import './styles/auth.css';
 	dispatch => ({ authActions: bindActionCreators(authActions, dispatch) })
 )
 class Auth extends Component {
+	static propTypes = {
+		auth: React.PropTypes.object,
+		authActions: React.PropTypes.object,
+		children: React.PropTypes.node
+	};
+
 	render() {
 		const {auth, authActions} = this.props;
 		const childrenWithProps = React.Children.map(this.props.children,
-      		(child) => React.cloneElement(child, { auth: auth, actions: authActions })
-      	);
+			(child) => React.cloneElement(child, { auth: auth, actions: authActions })
+		);
 		return (
 			<div>
 				<h2 className='brand-title-auth'>Logo+</h2> 

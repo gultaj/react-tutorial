@@ -6,9 +6,15 @@ import Preloader from '../Preloader';
 
 export default class Login extends Component {
 	static propTypes = {
-		user: PropTypes.object,
-		fetching: PropTypes.bool,
-		errorMessage: PropTypes.string
+		auth: PropTypes.shape({
+			user: PropTypes.object,
+			fetching: PropTypes.bool,
+			errorMessage: PropTypes.string,
+			token: PropTypes.string
+		}),
+		actions: PropTypes.shape({
+			login: PropTypes.func
+		})
 	};
 
 

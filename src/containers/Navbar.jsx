@@ -8,25 +8,34 @@ import { connect } from 'react-redux';
 import * as authActions from 'actions/AuthAction';
 
 @connect(
-	state => ({ auth: state.auth }),
+	state => ({ auth: state.auth, app: state.app }),
 	dispatch => ({ authActions: bindActionCreators(authActions, dispatch) })
 )
 export default class Navbar extends Component {
+	static propTypes = {
+		authActions: React.PropTypes.shape({
+			logout: React.PropTypes.func
+		}),
+		app: React.PropTypes.object,
+		auth: React.PropTypes.shape({
+			token: React.PropTypes.string
+		})
+	};
 	handleLogout() {
 		const {token} = this.props.auth;
-		var data = new FormData();
-		data.append('token', token)
+		var data = new FormData().append('token', token);
 		this.props.authActions.logout(data);
 	}
 
 	render() {
+		const { app } = this.props;
 		return (
 			<nav className='blue navbar'>
 				<div className='nav-wrapper'>
 					<a className='btn-floating btn-large waves-effect blue z-depth-0'><i className='menu-icon tiny material-icons'>menu</i></a>	
 					<div className='brand-logo'>
 						<Link to='/' className='brand-link'>Logo</Link>
-						<span className='brand-title'>Conversations</span>
+						<span className='brand-title'>{app.title}</span>
 					</div>
 
 					<ul id='nav-mobile' className='right hide-on-med-and-down'>

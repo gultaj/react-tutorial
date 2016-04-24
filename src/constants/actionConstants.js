@@ -35,5 +35,6 @@ export const CONVERSATION = {
 };
 
 export const APP = {
-	FAILURE: 'APP.FAILURE'
+	FAILURE: 'APP.FAILURE',
+	SET_TITLE: 'APP.SET_TITLE'
 };

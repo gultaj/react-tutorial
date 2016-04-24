@@ -9,8 +9,7 @@ const styles = {
 
 export default class Comment extends Component {
 	static propTypes = {
-		author: PropTypes.string,
-		children: PropTypes.element
+		text: PropTypes.string
 	};
 
 	render() {

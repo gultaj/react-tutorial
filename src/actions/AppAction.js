@@ -1,6 +1,10 @@
 import { APP, AUTH, URL_API } from '../constants/actionConstants';
 import Cookie from 'helpers/cookies';
 
+export function setTitle(title) {
+	return (dispatch) => dispatch({type: APP.SET_TITLE, payload: title});
+}
+
 export function setInitialState() {
 	return (dispatch) => {
 		const token = Cookie.get('token') || localStorage.getItem('token');

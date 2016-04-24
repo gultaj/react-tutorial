@@ -4,13 +4,18 @@ import {styles} from './styles/auth';
 import AuthError from './AuthError';
 
 export default class Login extends Component {
+	static propTypes = {
+		actions: React.PropTypes.shape({
+			register: React.PropTypes.func
+		}),
+		auth: React.PropTypes.object
+	};
 
 	handleSubmit(e) {
 		e.preventDefault();
 		const userData = new FormData(this.refs.regForm);
 		this.props.actions.register(userData);
-		this.refs.regPass.value = '';
-		this.refs.regPassConfirm.value = '';
+		this.refs.regPass.value = this.refs.regPassConfirm.value = '';
 	}
 
 	render() {

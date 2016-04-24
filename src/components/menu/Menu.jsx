@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 const links = [
@@ -14,17 +14,31 @@ const styles = {
 };
 
 export default class Menu extends Component {
-	isActive(href) {
-		return this.props.currentRoute == href;
+	static propTypes = {
+		actions: React.PropTypes.shape({
+			setTitle: React.PropTypes.func
+		}),
+		currentRoute: React.PropTypes.string
+	};
+
+	componentWillMount() {
+		const { currentRoute, actions } = this.props;
+		links.map((link) => {
+			if (currentRoute == link.href) actions.setTitle(link.title);
+		});
 	}
 
 	render() {
+		const { setTitle } = this.props.actions;
+		const { currentRoute } = this.props;
 		return (
 			<div className='collection'>
 				{links.map((link, i) => (
-					<Link to={link.href} key={i} className={(this.isActive(link.href) ? 'active ' : '') + 'collection-item'}>
+					<Link to={link.href} key={i} 
+						onClick={() => setTitle(link.title)} 
+						className={(currentRoute == link.href ? 'active ' : '') + 'collection-item'}>
 						<i className='material-icons menu-icon' style={styles}>{link.icon}</i>
-						<span className="title">{link.title}</span>
+						<span className='title'>{link.title}</span>
 					</Link>
 				))}
 			</div>
