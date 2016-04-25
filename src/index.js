@@ -8,7 +8,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import * as AppActions from 'actions/AppAction';
 import 'materialize-css/dist/css/materialize.css';
 import 'materialize-css/dist/js/materialize.min.js';
-
+// import 'material-design-lite/material.min.css';
+// import 'material-design-lite/material.min.js';
 
 export const store = configStore();
 

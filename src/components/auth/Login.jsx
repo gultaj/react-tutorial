@@ -21,7 +21,6 @@ export default class Login extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const userData = new FormData(this.refs.loginForm);
-		// console.log(userData.get('remember'));
 		this.props.actions.login(userData);
 		this.refs.loginPass.value = '';
 	}

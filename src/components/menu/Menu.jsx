@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import './styles/menu.css';
 
 const links = [
 	{title: 'Feed', href: '/', icon: 'home'},
@@ -8,10 +9,10 @@ const links = [
 	{title: 'My posts', href: '/posts', icon: 'person'}
 ];
 
-const styles = {
-	verticalAlign: 'middle',
-	marginRight: 20
-};
+// const styles = {
+// 	verticalAlign: 'middle',
+// 	marginRight: 20
+// };
 
 export default class Menu extends Component {
 	static propTypes = {
@@ -32,12 +33,12 @@ export default class Menu extends Component {
 		const { setTitle } = this.props.actions;
 		const { currentRoute } = this.props;
 		return (
-			<div className='collection'>
+			<div className='menu collection'>
 				{links.map((link, i) => (
 					<Link to={link.href} key={i} 
 						onClick={() => setTitle(link.title)} 
 						className={(currentRoute == link.href ? 'active ' : '') + 'collection-item'}>
-						<i className='material-icons menu-icon' style={styles}>{link.icon}</i>
+						<i className='material-icons menu-icon'>{link.icon}</i>
 						<span className='title'>{link.title}</span>
 					</Link>
 				))}

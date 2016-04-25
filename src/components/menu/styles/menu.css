@@ -1,0 +1,22 @@
+#app .menu {
+	border: none;
+	border-radius: 0;
+}
+#app .menu .collection-item {
+	color: #808080;
+    font-weight: 500;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: none;
+}
+#app .menu .collection-item:hover {
+	background-color: #F7F7F7;
+}
+#app .menu .collection-item.active {
+	background-color: #F7F7F7;
+    color: #2196F3;
+}
+.menu-icon {
+	vertical-align: middle;
+	margin-right: 20px;
+}

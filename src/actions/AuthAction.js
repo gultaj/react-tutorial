@@ -40,7 +40,7 @@ export function logout(data, redirectTo = '/auth/login') {
 			body: data
 		}).then(response => response.json()).then(data => {
 			if (data.success) {
-				dispatch({type: AUTH.LOGOUT_SUCCESS});
+				dispatch({type: AUTH.LOGOUT_SUCCESS, fetching: false});
 				Cookie.delete('token');
 				localStorage.removeItem('token')
 				browserHistory.push(redirectTo);
