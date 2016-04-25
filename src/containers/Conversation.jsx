@@ -17,9 +17,6 @@ class Conversation extends Component {
 			getConversations: React.PropTypes.func,
 			getMessages: React.PropTypes.func
 		}),
-		appActions: React.PropTypes.shape({
-			setTitle: React.PropTypes.func
-		}),
 		conversation: React.PropTypes.shape({
 			conversations: React.PropTypes.array,
 			messages: React.PropTypes.array
@@ -30,8 +27,7 @@ class Conversation extends Component {
 	};
 
 	componentWillMount() {
-		this.props.conversationActions.getConversations(this.props.params.user_id); 
-		this.props.appActions.setTitle('Conversation');   
+		this.props.conversationActions.getConversations(this.props.params.user_id);   
 	}
 	handleClick(e) {
 		e.preventDefault();
