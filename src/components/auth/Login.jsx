@@ -6,16 +6,22 @@ import Preloader from '../Preloader';
 
 export default class Login extends Component {
 	static propTypes = {
-		user: PropTypes.object,
-		fetching: PropTypes.bool,
-		errorMessage: PropTypes.string
+		auth: PropTypes.shape({
+			user: PropTypes.object,
+			fetching: PropTypes.bool,
+			errorMessage: PropTypes.string,
+			token: PropTypes.string
+		}),
+		actions: PropTypes.shape({
+			login: PropTypes.func
+		})
 	};
 
 
 	handleSubmit(e) {
 		e.preventDefault();
 		const userData = new FormData(this.refs.loginForm);
-		this.props.actions.login(userData, '/');
+		this.props.actions.login(userData);
 		this.refs.loginPass.value = '';
 	}
 
@@ -44,7 +50,7 @@ export default class Login extends Component {
 						</p>
 						<p className='center-align'><button type='submit' className='btn blue'>Login</button></p>
 					</form>
-					<Preloader visible={true} />
+					<Preloader visible={auth.fetching} />
 				</div>
 			</div>		
 		);

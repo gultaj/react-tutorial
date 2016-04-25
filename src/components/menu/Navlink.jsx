@@ -8,7 +8,7 @@ export default class NavLink extends Component {
 	};
 
 	get isActive() {
-		return this.props.to === localStorage.getItem('currentRoute');
+		return false;//this.props.to === localStorage.getItem('currentRoute');
 	}
 
 	render() {

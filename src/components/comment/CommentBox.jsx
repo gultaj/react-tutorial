@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CommentList from './CommentList';
-import CommentForm from './CommentForm';
+// import CommentForm from './CommentForm';
 import Preloader from '../Preloader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,6 +11,10 @@ import * as postActions from 'actions/PostAction';
 	dispatch => ({ postActions: bindActionCreators(postActions, dispatch) })
 )
 export default class CommentBox extends Component {
+	static propTypes = {
+		post: React.PropTypes.object,
+		postActions: React.PropTypes.object  
+	};
 	render() {
 		const { post, postActions } = this.props;
 		return (

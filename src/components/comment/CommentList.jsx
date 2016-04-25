@@ -12,7 +12,10 @@ const styles = {
 
 export default class CommentList extends Component {
 	static propTypes = {
-		posts: PropTypes.array
+		posts: PropTypes.array,
+		actions: React.PropTypes.shape({
+			getAllPosts: React.PropTypes.func
+		})
 	};
 
 	componentWillMount() {

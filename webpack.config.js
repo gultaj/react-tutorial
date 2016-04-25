@@ -4,7 +4,7 @@ var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: [
     'webpack-hot-middleware/client',
     'babel-polyfill',
@@ -25,11 +25,8 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      {
-        test: /\.js$/,
-        loaders: ['eslint'],
-        include: [path.resolve(__dirname, 'src')]
-      }
+      { test: /\.jsx$/, loader: 'eslint', include: [path.resolve(__dirname, 'src')] },
+      { test: /\.js$/, loader: 'eslint', include: [path.resolve(__dirname, 'src')] }
     ],
     loaders: [
       {
