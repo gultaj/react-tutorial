@@ -21,7 +21,7 @@ export default class Menu extends Component {
 
 	componentWillMount() {
 		const { setTitle } = this.props.actions;
-		const { isActive } =this.context.router;
+		const { isActive } = this.context.router;
 		links.map((link) => {
 			if (isActive(link.href)) setTitle(link.title);
 		});

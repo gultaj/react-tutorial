@@ -3,16 +3,24 @@ import { Link } from 'react-router';
 import './styles/navbar.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { appConfig } from 'config/app';
 import * as authActions from 'actions/AuthAction';
+import * as appActions from 'actions/AppAction';
 
 @connect(
 	state => ({ auth: state.auth, app: state.app }),
-	dispatch => ({ authActions: bindActionCreators(authActions, dispatch) })
+	dispatch => ({ 
+		authActions: bindActionCreators(authActions, dispatch),
+		appActions: bindActionCreators(appActions, dispatch)
+	})
 )
 export default class Navbar extends Component {
 	static propTypes = {
 		authActions: React.PropTypes.shape({
 			logout: React.PropTypes.func
+		}),
+		appActions: React.PropTypes.shape({
+			setTitle: React.PropTypes.func
 		}),
 		app: React.PropTypes.object,
 		auth: React.PropTypes.shape({
@@ -29,8 +37,6 @@ export default class Navbar extends Component {
 		const {token} = this.props.auth;
 		var data = new FormData();
 		data.append('token', token);
-		console.log(data);
-
 		this.props.authActions.logout(data);
 	}
 	dropdownMenu() {
@@ -38,13 +44,13 @@ export default class Navbar extends Component {
 	}
 
 	render() {
-		const { app } = this.props;
+		const { app, appActions } = this.props;
 		return (
 			<nav className='blue navbar'>
 				<div className='nav-wrapper'>
 					<a className='btn-floating btn-large waves-effect blue z-depth-0'><i className='menu-icon tiny material-icons'>menu</i></a>	
 					<div className='brand-logo'>
-						<Link to='/' className='brand-link'>Logo</Link>
+						<Link to='/' className='brand-link' onClick={()=>appActions.setTitle('Feed')}>{appConfig.siteName}</Link>
 						<span className='brand-title'>{app.title}</span>
 					</div>
 

@@ -21,9 +21,7 @@ export function login(userData, redirectTo = '/') {
 					localStorage.setItem('token', data.user.remember_token);
 				}
 				browserHistory.replace(redirectTo);
-			} else {
-				throw new Error(data.message);
-			}
+			} else throw new Error(data.message); 
 		}).catch(error => dispatch({
 			type: AUTH.LOGIN_FAILURE,
 			payload: error.message
@@ -42,11 +40,9 @@ export function logout(data, redirectTo = '/auth/login') {
 			if (data.success) {
 				dispatch({type: AUTH.LOGOUT_SUCCESS, fetching: false});
 				Cookie.delete('token');
-				localStorage.removeItem('token')
+				localStorage.clear();
 				browserHistory.replace(redirectTo);
-			} else {
-				throw new Error(data.message);
-			}
+			} else throw new Error(data.message); 
 		}).catch(error => dispatch({
 			type: AUTH.LOGOUT_FAILURE,
 			payload: error.message
@@ -65,9 +61,7 @@ export function register(userData, redirectTo = '/auth/login') {
 			if (data.success) {
 				dispatch({type: AUTH.REGISTER_SUCCESS});
 				browserHistory.replace(redirectTo);
-			} else {
-				throw new Error(data.message);
-			}
+			} else throw new Error(data.message); 
 		}).catch(error => dispatch({
 			type: AUTH.REGISTER_FAILURE,
 			payload: error.message

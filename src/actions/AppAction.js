@@ -1,8 +1,12 @@
 import { APP, AUTH, URL_API } from '../constants/actionConstants';
 import Cookie from 'helpers/cookies';
+import { appConfig } from 'config/app';
 
-export function setTitle(title) {
-	return (dispatch) => dispatch({type: APP.SET_TITLE, payload: title});
+export function setTitle(title = '') {
+	return (dispatch) => {
+		dispatch({type: APP.SET_TITLE, payload: title});
+		document.title = title + ' | ' + appConfig.title;
+	}
 }
 
 export function setInitialState() {
@@ -10,10 +14,8 @@ export function setInitialState() {
 		const token = Cookie.get('token') || localStorage.getItem('token');
 		if (token) {
 			dispatch({type: AUTH.SET_TOKEN, payload: token});
-
 			dispatch({type: AUTH.GET_LOGGED_USER_REQUEST});
 
-			// var headers = new Headers({'Token': token});
 			fetch(`${URL_API}/auth/user`, {
 				method: 'POST',
 				body: new FormData({'Token': token})
