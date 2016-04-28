@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import AuthError from './AuthError';
-import {styles} from './styles/auth';
 import Preloader from '../Preloader';
+import st from './styles/auth.css'
 
 export default class Login extends Component {
 	static propTypes = {
@@ -28,10 +28,10 @@ export default class Login extends Component {
 	render() {
 		const {auth} = this.props;
 		return (
-			<div className='form-signin'>
-				<div className='valign-wrapper' style={styles.wrapper}>
+			<div className={st.formSignin}>
+				<div className={st.wrapper}>
 					<h3 className=''>Sign In</h3>
-					<Link to='/auth/register' className='valign' style={styles.link}>Register</Link>
+					<Link to='/auth/register' className={st.link}>Register</Link>
 				</div>
 				<AuthError message={auth.errorMessage} />
 				<div className='card-panel z-depth-1' style={{position:'relative'}}>

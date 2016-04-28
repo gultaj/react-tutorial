@@ -25,18 +25,19 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      { test: /\.jsx$/, loader: 'eslint', include: [path.resolve(__dirname, 'src')] },
-      { test: /\.js$/, loader: 'eslint', include: [path.resolve(__dirname, 'src')] }
+      { test: /\.(jsx|js)$/, loader: 'eslint', include: [path.resolve(__dirname, 'src')] }
     ],
     loaders: [
+      { test: /\.css$/, loader: "style-loader!css-loader?modules&importLoaders=1&sourceMap&localIdentName=[hash:base64:6]"},
       {
         loaders: ['react-hot', 'babel-loader'],
         include: [path.resolve(__dirname, 'src')],
         test: /\.js$/,
         plugins: ['transform-runtime'],
+        exclude:/node_modules/
       },
       { test: /\.jsx$/, exclude: /(node_modules|bower_components)/, loaders: ['react-hot', 'babel-loader']},
-      { test: /\.css$/, loader: "style-loader!css-loader" },
+
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   }

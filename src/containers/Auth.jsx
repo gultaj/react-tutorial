@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as authActions from 'actions/AuthAction';
-import './styles/auth.css';
+import st from './styles/auth.css';
 
 @connect(
 	state => ({ auth: state.auth }),
@@ -22,8 +22,8 @@ class Auth extends Component {
 		);
 		return (
 			<div>
-				<h2 className='brand-title-auth'>Logo+</h2> 
-				<div className='auth-form'>{childrenWithProps}</div>;
+				<h2 className={st.brandTitle}>Logo+</h2> 
+				<div className={st.form}>{childrenWithProps}</div>;
 			</div>
 		)
 	}

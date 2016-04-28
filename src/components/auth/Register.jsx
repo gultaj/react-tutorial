@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {styles} from './styles/auth';
 import AuthError from './AuthError';
+import st from './styles/auth.css'
 
 export default class Login extends Component {
 	static propTypes = {
@@ -21,10 +21,10 @@ export default class Login extends Component {
 	render() {
 		const {auth} = this.props;
 		return (
-			<div className='form-signin'>
-				<div className='valign-wrapper' style={styles.wrapper}>
+			<div className={st.formSignin}>
+				<div className={st.wrapper}>
 					<h3 className=''>Register</h3>
-					<Link to='/auth/login' className='valign' style={styles.link}>Sign In</Link>
+					<Link to='/auth/login' className={st.link}>Sign In</Link>
 				</div>
 				<AuthError message={auth.errorMessage} />
 				<div className='card-panel lighten-5 z-depth-1'>
