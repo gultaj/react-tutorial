@@ -1,9 +1,11 @@
 import { CONVERSATION, URL_API } from '../constants/actionConstants';
+import {store} from 'index';
 
-export function getConversations(user_id) {
+export function getConversations() {
 	return (dispatch) => {
+		const state = store.getState();
 		dispatch({ type: CONVERSATION.GET_BY_USER_REQUEST });
-		fetch(`${URL_API}/conversations/${user_id}`).then(response => response.json())
+		fetch(`${URL_API}/conversations/${state.auth.user.id}`).then(response => response.json())
 		.then(conversations => dispatch({
 			type: CONVERSATION.GET_BY_USER_SUCCESS, 
 			payload: conversations

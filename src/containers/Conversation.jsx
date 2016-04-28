@@ -20,14 +20,11 @@ class Conversation extends Component {
 		conversation: React.PropTypes.shape({
 			conversations: React.PropTypes.array,
 			messages: React.PropTypes.array
-		}),
-		params: React.PropTypes.shape({
-			user_id: React.PropTypes.number
 		})
 	};
 
 	componentWillMount() {
-		this.props.conversationActions.getConversations(this.props.params.user_id);   
+		this.props.conversationActions.getConversations();   
 	}
 	handleClick(e) {
 		e.preventDefault();

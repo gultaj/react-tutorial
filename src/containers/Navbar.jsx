@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './styles/navbar.css';
+import st from './styles/navbar.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { appConfig } from 'config/app';
@@ -46,21 +46,20 @@ export default class Navbar extends Component {
 	render() {
 		const { app, appActions } = this.props;
 		return (
-			<nav className='blue navbar'>
+			<nav className={'blue ' + st.navbar}>
 				<div className='nav-wrapper'>
-					<a className='btn-floating btn-large waves-effect blue z-depth-0'><i className='menu-icon tiny material-icons'>menu</i></a>	
-					<div className='brand-logo'>
-						<Link to='/' className='brand-link' onClick={()=>appActions.setTitle('Feed')}>{appConfig.siteName}</Link>
-						<span className='brand-title'>{app.title}</span>
+					<a className='btn-floating btn-large waves-effect blue z-depth-0'><i className={st.icon + ' tiny material-icons'}>menu</i></a>	
+					<div className={st.logo + ' brand-logo'}>
+						<Link to='/' className={st.link} onClick={()=>appActions.setTitle('Feed')}>{appConfig.siteName}</Link>
+						<span className={st.title}>{app.title}</span>
 					</div>
-
 					<ul id='nav-mobile' className='right hide-on-med-and-down'>
 						<li><Link to='/about'>About</Link></li>
 						<li className=''>
-							<button onClick={::this.dropdownMenu} className='btn-floating grey lighten-1'><i className='material-icons navbar-icon'>person</i></button>
-							<div className={(this.state.menuActive ? 'active ' : '') + 'dropdown-menu'} role='menu'>
-								<div className='card profile z-depth-0'>
-									<div className='arrow'></div>
+							<button onClick={::this.dropdownMenu} className='btn-floating grey lighten-1'><i className={'material-icons ' + st.navbarIcon }>person</i></button>
+							<div className={(this.state.menuActive ? st.active + ' ' : '') + st.dropdownMenu} role='menu'>
+								<div className={st.profile + ' card z-depth-0'}>
+									<div className={st.arrow}></div>
 									<div className='card-content black-text row'>
 										<div className='col m2'>
 											<i className='material-icons circle'>folder</i>
@@ -70,8 +69,8 @@ export default class Navbar extends Component {
 											<p>First Line Second Line</p>
 										</div>
 									</div>
-									<div className='card-action profile-action'>
-										<button type='button' onClick={::this.handleLogout} className='btn blue profile-btn--logout'>Logout</button>
+									<div className={'card-action ' + st.profileAction}>
+										<button type='button' onClick={::this.handleLogout} className={'btn blue ' + st.logout}>Logout</button>
 									</div>
 								</div>
 							</div>

@@ -15,9 +15,8 @@ export default (
 		<Route component={App}>
 			<IndexRoute component={CommentBox} onEnter={requireAuth} />
 			<Route path='/about' title='About' component={About}/>
-			<Route path='/conversations/:user_id' component={Conversation} />
 			<Route path='/subscribes' component={About} />
-			<Route path='/conversations' component={About} />
+			<Route path='/conversations' component={Conversation} />
 			<Route path='/posts' component={About} />
 		</Route>
 		<Route path='/auth' component={Auth}>

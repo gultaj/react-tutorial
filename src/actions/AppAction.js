@@ -11,7 +11,7 @@ export function setTitle(title = '') {
 
 export function setInitialState() {
 	return (dispatch) => {
-		const token = Cookie.get('token') || localStorage.getItem('token');
+		const token = Cookie.get('token') || localStorage.getItem('user').remember_token;
 		if (token) {
 			dispatch({type: AUTH.SET_TOKEN, payload: token});
 			dispatch({type: AUTH.GET_LOGGED_USER_REQUEST});

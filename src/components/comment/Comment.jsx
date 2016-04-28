@@ -14,7 +14,7 @@ export default class Comment extends Component {
 
 	render() {
 		return (
-			<div className='col m6' style={styles}>
+			<div className='col m6 wrapper' style={styles}>
 				<div className='card'>
 					<div className='card-content'>
 						<span className='card-title activator grey-text text-darken-4'>Card Title</span>

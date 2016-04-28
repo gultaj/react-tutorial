@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './styles/menu.css';
+import st from './styles/menu.css';
 
 const links = [
 	{title: 'Feed', href: '/', icon: 'home', params: {onlyActiveOnIndex: true}},
@@ -30,14 +30,14 @@ export default class Menu extends Component {
 	render() {
 		const { setTitle } = this.props.actions;
 		return (
-			<div className='menu collection'>
+			<div className={st.menu + ' collection'}>
 				{links.map((link, i) => (
 					<Link to={link.href} key={i} 
 						{...link.params}
 						onClick={() => setTitle(link.title)} 
-						activeClassName='active'
-						className='collection-item'>
-						<i className='material-icons menu-icon'>{link.icon}</i>
+						activeClassName={st.active}
+						className={st['collection-item'] + ' collection-item'}>
+						<i className={'material-icons ' + st.icon}>{link.icon}</i>
 						<span className='title'>{link.title}</span>
 					</Link>
 				))}

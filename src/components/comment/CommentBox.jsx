@@ -18,7 +18,7 @@ export default class CommentBox extends Component {
 	render() {
 		const { post, postActions } = this.props;
 		return (
-			<div className='panel panel-default'>
+			<div className='panel panel-default wrapper'>
 				<div className='panel-heading'>
 					<h1 className='panel-title'>Комментарии</h1>
 				</div>
