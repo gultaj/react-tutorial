@@ -1,11 +1,14 @@
 import { CONVERSATION, URL_API } from '../constants/actionConstants';
-import {store} from 'index';
+import { dataToken } from 'helpers/data';
 
 export function getConversations() {
 	return (dispatch) => {
-		const state = store.getState();
 		dispatch({ type: CONVERSATION.GET_BY_USER_REQUEST });
-		fetch(`${URL_API}/conversations/${state.auth.user.id}`).then(response => response.json())
+		console.log(dataToken());
+		fetch(`${URL_API}/conversations`, {
+			method: 'POST',
+			body: dataToken()
+		}).then(response => response.json())
 		.then(conversations => dispatch({
 			type: CONVERSATION.GET_BY_USER_SUCCESS, 
 			payload: conversations

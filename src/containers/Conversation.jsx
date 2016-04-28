@@ -23,7 +23,7 @@ class Conversation extends Component {
 		})
 	};
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.conversationActions.getConversations();   
 	}
 	handleClick(e) {

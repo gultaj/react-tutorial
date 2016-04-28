@@ -18,7 +18,7 @@ export function login(userData, redirectTo = '/') {
 				});
 				Cookie.set('token', data.user.remember_token, {path: '/'});
 				if (userData.get('remember')) {
-					localStorage.setItem('user', data.user);
+					localStorage.setItem('token', data.user.remember_token);
 				}
 				browserHistory.replace(redirectTo);
 			} else throw new Error(data.message); 
