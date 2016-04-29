@@ -1,18 +1,19 @@
 import { CONVERSATION, URL_API } from '../constants/actionConstants';
-import { dataToken } from 'helpers/data';
+import { requestToken } from 'helpers/fetch';
 
 export function getConversations() {
 	return (dispatch) => {
 		dispatch({ type: CONVERSATION.GET_BY_USER_REQUEST });
-		console.log(dataToken());
-		fetch(`${URL_API}/conversations`, {
-			method: 'POST',
-			body: dataToken()
-		}).then(response => response.json())
-		.then(conversations => dispatch({
-			type: CONVERSATION.GET_BY_USER_SUCCESS, 
-			payload: conversations
-		}))
+
+		fetch(requestToken(`${URL_API}/conversations`)).then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				dispatch({
+					type: CONVERSATION.GET_BY_USER_SUCCESS, 
+					payload: data
+				});
+			} else throw new Error(data.message);
+		})
 		.catch(error => dispatch({
 			type: CONVERSATION.GET_BY_USER_FAILURE,
 			payload: error

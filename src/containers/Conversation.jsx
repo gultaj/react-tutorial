@@ -24,7 +24,13 @@ class Conversation extends Component {
 	};
 
 	componentDidMount() {
-		this.props.conversationActions.getConversations();   
+		this.props.conversationActions.getConversations();  
+		// fetch(requestToken('//reactcomments.dev/test')).then(res => res.text()).then(json => {
+		// 	console.log(json);
+		// }).catch(err => {
+		// 	console.log(err.message);
+		// });
+
 	}
 	handleClick(e) {
 		e.preventDefault();
