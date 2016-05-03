@@ -23,31 +23,32 @@ class Conversation extends Component {
 		})
 	};
 
+	constructor() {
+		super();
+		this.state = {current: 0};
+	}
+
 	componentDidMount() {
 		this.props.conversationActions.getConversations();  
-		// fetch(requestToken('//reactcomments.dev/test')).then(res => res.text()).then(json => {
-		// 	console.log(json);
-		// }).catch(err => {
-		// 	console.log(err.message);
-		// });
 
 	}
 	handleClick(e) {
 		e.preventDefault();
-
+		this.setState({current: +e.target.dataset.id});
 		this.props.conversationActions.getMessages(+e.target.dataset.id);
 	}
 
 	render() {
 		const {conversations, messages} = this.props.conversation;
-		// console.log(conversation);
 		if (conversations.length) {
 			return (
 				<div className='row'>
 					<div className='col m4'>
 						<div className='collection'>
 							{conversations.map((conv) => {
-								return <a key={conv.id} data-id={conv.id} href='#' onClick={::this.handleClick} className='collection-item'>{conv.user.nickname}</a>;
+								return <a key={conv.id} data-id={conv.id} href='#' 
+									onClick={::this.handleClick} 
+									className={(this.state.current == conv.id ? 'active ': '') + 'collection-item'}>{conv.user.nickname}</a>;
 							})}
 						</div>
 					</div>

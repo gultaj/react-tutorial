@@ -10,7 +10,7 @@ export function getConversations() {
 			if (data.success) {
 				dispatch({
 					type: CONVERSATION.GET_BY_USER_SUCCESS, 
-					payload: data
+					payload: data.conversations
 				});
 			} else throw new Error(data.message);
 		})
@@ -25,11 +25,15 @@ export function getMessages(conv_id) {
 	return (dispatch) => {
 		dispatch({type: CONVERSATION.GET_MESSAGES_REQUEST});
 
-		fetch(`${URL_API}/messages/${conv_id}`).then(response => response.json())
-		.then(messages => dispatch({
-			type: CONVERSATION.GET_MESSAGES_SUCCESS, 
-			payload: messages
-		}))
+		fetch(requestToken(`${URL_API}/messages/${conv_id}`)).then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				dispatch({
+					type: CONVERSATION.GET_MESSAGES_SUCCESS, 
+					payload: data.messages
+				});
+			} else throw new Error(data.message);
+		})
 		.catch(error => dispatch({
 			type: CONVERSATION.GET_MESSAGES_FAILURE,
 			payload: error
