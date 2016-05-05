@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as conversationActions from 'actions/ConversationAction';
 import * as appActions from 'actions/AppAction';
+import st from './styles/conversations.css';
 
 @connect(
 	state => ({ conversation: state.conversation }),
@@ -48,7 +49,9 @@ class Conversation extends Component {
 							{conversations.map((conv) => {
 								return <a key={conv.id} data-id={conv.id} href='#' 
 									onClick={::this.handleClick} 
-									className={(this.state.current == conv.id ? 'active ': '') + 'collection-item'}>{conv.user.nickname}</a>;
+									className={(this.state.current == conv.id ? 'active ': '') + 'collection-item ' + st.item}>
+									<img src={conv.user.avatar} className={st.avatar} width='40' height='40'/>
+									{conv.user.nickname}</a>;
 							})}
 						</div>
 					</div>

@@ -1,8 +1,8 @@
-.menu {
+div.menu {
 	border: none;
 	border-radius: 0;
 }
-.menu .collection-item {
+div.menu .collection-item {
 	color: #808080 !important;
     font-weight: 500;
     padding-top: 12px;
