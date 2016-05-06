@@ -1,12 +1,12 @@
 import { APP } from '../constants/actionConstants';
 
-export const inititalState = {
+export const initialState = {
 	currentRoute: '',
 	title: '',
 	errorMessage: ''
 };
 
-export default function app(state = inititalState, action) {
+export default function app(state = initialState, action) {
 	switch (action.type) {
 		case '@@router/LOCATION_CHANGE':
 			return {...state, currentRoute: window.location.pathname};

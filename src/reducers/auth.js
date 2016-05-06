@@ -1,14 +1,14 @@
 import { AUTH } from '../constants/actionConstants';
 // import Cookie from 'helpers/cookies';
 
-export const inititalState = {
+export const initialState = {
 	user: null,
 	token: null,
 	fetching: false,
 	errorMessage: ''
 };
 
-export default function auth(state = inititalState, action) {
+export default function auth(state = initialState, action) {
 	switch (action.type) {
 		case '@@router/LOCATION_CHANGE':
 			return {...state, errorMessage: ''};
@@ -27,7 +27,7 @@ export default function auth(state = inititalState, action) {
 		case AUTH.REGISTER_SUCCESS:
 			return {...state, fetching: false};	
 		case AUTH.LOGOUT_SUCCESS: case AUTH.RESET_STATE:
-			return inititalState;
+			return initialState;
 		default:
 			return state;
 	}

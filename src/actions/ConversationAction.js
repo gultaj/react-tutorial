@@ -24,7 +24,7 @@ export function getConversations() {
 export function getMessages(conv_id) {
 	return (dispatch) => {
 		dispatch({type: CONVERSATION.GET_MESSAGES_REQUEST});
-
+		console.log(conv_id);
 		fetch(requestToken(`${URL_API}/messages/${conv_id}`)).then(response => response.json())
 		.then(data => {
 			if (data.success) {
@@ -39,4 +39,8 @@ export function getMessages(conv_id) {
 			payload: error
 		}));
 	}
+}
+
+export function reset() {
+	return (dispatch) => dispatch({type: CONVERSATION.RESET});
 }

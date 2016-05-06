@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import st from './styles/menu.css';
-
-const links = [
-	{title: 'Feed', href: '/', icon: 'home', params: {onlyActiveOnIndex: true}},
-	{title: 'Subscribes', href: '/subscribes', icon: 'share'},
-	{title: 'Conversations', href: '/conversations', icon: 'message'},
-	{title: 'My posts', href: '/posts', icon: 'person'}
-];
+import { menu as links } from 'config/app';
 
 export default class Menu extends Component {
 	static propTypes = {

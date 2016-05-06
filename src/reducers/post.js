@@ -1,12 +1,12 @@
 import { POST } from '../constants/actionConstants';
 
-export const inititalState = {
+export const initialState = {
 	posts: [],
 	fetching: false,
 	errorMessage: {}
 };
 
-export default function post(state = inititalState, action) {
+export default function post(state = initialState, action) {
 	switch (action.type) {
 		case POST.GET_ALL_REQUEST:
 			return {...state, fetching: true};
