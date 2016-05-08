@@ -6,7 +6,7 @@ import * as conversationActions from 'actions/ConversationAction';
 import * as appActions from 'actions/AppAction';
 import st from './styles/conversations.css';
 import Message from 'components/messages/Message';
-import { browserHistory } from 'react-router';
+// import _ from 'lodash';
 
 @connect(
 	state => ({ conversation: state.conversation }),
@@ -31,45 +31,28 @@ class Conversation extends Component {
 
 	constructor() {
 		super();
-		this.state = {}
+		this.state = {current_user: ''};
 	}
 
 	componentWillMount() {
-		const { ...actions } = this.props.conversationActions;
-		const { user } = this.props.params;
-		// var promise = new Promise(resolve => {
-		// 	// actions.getConversations();
-		// 	resolve(actions.getConversations()); 
-			
-		// });
-		Promise.all([actions.getConversations()]).then(() => console.log(this.props.conversation.conversations))
-		// promise.then(() => {
-		// 	console.log(data);
-		// 	return true;
-		// })
-		// if (!user) {
-		// 	var conv = this.props.conversation.conversations[0];
-		// 	browserHistory.push('/messages/' + conv.id);
-		// }
-		
-		if (user) actions.getMessages(user);
+		const {user} = this.props.params;
+		this.props.conversationActions.getConversations().then(() => this.setCurrentUser());
+		if (user) this.props.conversationActions.getMessages(user);
 	}
 
 	componentWillUnmount() {
 		this.props.conversationActions.reset();
 	}
 
+	setCurrentUser() {
+		const {conversations} = this.props.conversation;
+		const conv = conversations.find(o => o.id == this.props.params.user);
+		this.setState({current_user: conv.user.full_name});
+	}
+
 	componentDidUpdate(prevProps) {
-		// if (!this.props.params.user) {
-		// 	var conv = this.props.conversation.conversations[0];
-		// 	browserHistory.push('/messages/' + conv.id);
-		// }
-		const { conversations, messages } = this.props.conversation;
-		if (conversations.length && !messages.length) {
-			const conv = conversations[0];
-			browserHistory.resolve('/messages/' + conv.id);
-		}
 		if (prevProps.params.user !== this.props.params.user) {
+			this.setCurrentUser();
 			this.props.conversationActions.getMessages(this.props.params.user);
 		}
 	}
@@ -92,7 +75,7 @@ class Conversation extends Component {
 						</div>
 					</div>
 					<div className='col m8'>
-					<h3></h3>
+					<h3>{this.state.current_user}</h3>
 					{ messages.length ? messages.map((message, i) => <Message key={i} message={message.message} />) : ''}
 					</div>
 				</div>

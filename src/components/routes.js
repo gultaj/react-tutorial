@@ -8,6 +8,7 @@ import App from 'containers/App';
 import Conversation from 'containers/Conversation';
 import Auth from 'containers/Auth';
 import {requireAuth} from 'middlewares/auth';
+import {conv} from 'middlewares/conv';
 
 export default (
 
@@ -16,8 +17,8 @@ export default (
 			<IndexRoute component={CommentBox} onEnter={requireAuth} />
 			<Route path='/about' title='About' component={About}/>
 			<Route path='/subscribes' component={About} />
-			<Route path='/messages'>
-				<IndexRoute component={Conversation} />
+			<Route path='messages'>
+				<IndexRoute component={Conversation} onEnter={conv} />
 				<Route path='(:user)' component={Conversation} />
 			</Route>
 			<Route path='/posts' component={About} />

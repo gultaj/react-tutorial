@@ -18,7 +18,6 @@ const history = syncHistoryWithStore(browserHistory, store);
 store.dispatch(AppActions.setInitialState());
 
 
-
 render(
 	<Provider store={store}>
 		<Router routes={routes} history={history} />

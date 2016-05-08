@@ -5,10 +5,10 @@ export function getConversations() {
 	return (dispatch) => {
 		dispatch({ type: CONVERSATION.GET_BY_USER_REQUEST });
 
-		fetch(requestToken(`${URL_API}/conversations`)).then(response => response.json())
+		return fetch(requestToken(`${URL_API}/conversations`)).then(response => response.json())
 		.then(data => {
 			if (data.success) {
-				dispatch({
+				return dispatch({
 					type: CONVERSATION.GET_BY_USER_SUCCESS, 
 					payload: data.conversations
 				});
@@ -21,10 +21,24 @@ export function getConversations() {
 	}
 }
 
+export function getLastId() {
+	return (dispatch) => {
+		dispatch({type:CONVERSATION.GET_LAST_ID_REQUEST});
+
+		return fetch(requestToken(`${URL_API}/conversations/last_id`)).then(response => response.json())
+			.then(data => {
+			if (data.success) {
+				dispatch({type: CONVERSATION.GET_LAST_ID_SUCCESS});
+				return data.conv_id;
+			} else throw new Error(data.message);
+		});
+	}
+}
+
 export function getMessages(conv_id) {
 	return (dispatch) => {
 		dispatch({type: CONVERSATION.GET_MESSAGES_REQUEST});
-		console.log(conv_id);
+		// console.log(conv_id);
 		fetch(requestToken(`${URL_API}/messages/${conv_id}`)).then(response => response.json())
 		.then(data => {
 			if (data.success) {
