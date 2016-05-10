@@ -35,25 +35,28 @@ class Conversation extends Component {
 	}
 
 	componentWillMount() {
-		const {user} = this.props.params;
-		this.props.conversationActions.getConversations().then(() => this.setCurrentUser());
-		if (user) this.props.conversationActions.getMessages(user);
+		this.props.conversationActions.getConversations()
+			.then(() => this.setCurrentUser(this.props.params.user));
 	}
 
 	componentWillUnmount() {
 		this.props.conversationActions.reset();
 	}
 
-	setCurrentUser() {
+	setCurrentUser(id = null) {
 		const {conversations} = this.props.conversation;
-		const conv = conversations.find(o => o.id == this.props.params.user);
-		this.setState({current_user: conv.user.full_name});
+		id = id || conversations[0].id;
+		const conv = conversations.find(o => o.id == id);
+		if (conv) {
+			this.setState({current_user: conv.user.full_name});
+			this.props.conversationActions.getMessages(id);
+		}
 	}
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.params.user !== this.props.params.user) {
-			this.setCurrentUser();
-			this.props.conversationActions.getMessages(this.props.params.user);
+	componentWillReceiveProps(nextProps) {
+		const user = nextProps.params.user;
+		if (user !== this.props.params.user) {
+			this.setCurrentUser(user);
 		}
 	}
 
@@ -66,12 +69,12 @@ class Conversation extends Component {
 						<div className='collection'>
 							{conversations.map((conv) => {
 								return <Link key={conv.id} data-id={conv.id} to={'/messages/' + conv.id}
-									className={'collection-item ' + st.item}
+									className={'collection-item ' + st.item}									
 									activeClassName='active'>
 									<img src={conv.user.avatar} className={st.avatar} width='40' height='40'/>
 									{conv.user.full_name}</Link>;
 							})}
-							<a href='#' data-id='-1' className={'collection-item ' + st.item}>New message</a>
+							<Link to='/messages/new' className={'collection-item ' + st.item}>New message</Link>
 						</div>
 					</div>
 					<div className='col m8'>

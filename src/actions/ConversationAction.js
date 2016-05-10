@@ -6,18 +6,18 @@ export function getConversations() {
 		dispatch({ type: CONVERSATION.GET_BY_USER_REQUEST });
 
 		return fetch(requestToken(`${URL_API}/conversations`)).then(response => response.json())
-		.then(data => {
-			if (data.success) {
-				return dispatch({
-					type: CONVERSATION.GET_BY_USER_SUCCESS, 
-					payload: data.conversations
-				});
-			} else throw new Error(data.message);
-		})
-		.catch(error => dispatch({
-			type: CONVERSATION.GET_BY_USER_FAILURE,
-			payload: error
-		}));
+			.then(data => {
+				if (data.success) {
+					return dispatch({
+						type: CONVERSATION.GET_BY_USER_SUCCESS, 
+						payload: data.conversations
+					});
+				} else throw new Error(data.message);
+			})
+			.catch(error => dispatch({
+				type: CONVERSATION.GET_BY_USER_FAILURE,
+				payload: error
+			}));
 	}
 }
 

@@ -19,6 +19,7 @@ export default (
 			<Route path='/subscribes' component={About} />
 			<Route path='messages'>
 				<IndexRoute component={Conversation} onEnter={conv} />
+				<Route path='new' />
 				<Route path='(:user)' component={Conversation} />
 			</Route>
 			<Route path='/posts' component={About} />
