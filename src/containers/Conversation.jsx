@@ -3,21 +3,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as conversationActions from 'actions/ConversationAction';
-import * as appActions from 'actions/AppAction';
+// import * as appActions from 'actions/AppAction';
 import st from './styles/conversations.css';
 import Message from 'components/messages/Message';
 // import _ from 'lodash';
 
 @connect(
 	state => ({ conversation: state.conversation }),
-	dispatch => ({ 
-		conversationActions: bindActionCreators(conversationActions, dispatch),
-		appActions: bindActionCreators(appActions, dispatch)
-	})
+	dispatch => ({ actions: bindActionCreators(conversationActions, dispatch) })
 )
 class Conversation extends Component {
 	static propTypes = {
-		conversationActions: React.PropTypes.shape({
+		actions: React.PropTypes.shape({
 			getConversations: React.PropTypes.func,
 			getMessages: React.PropTypes.func,
 			reset: React.PropTypes.func
@@ -35,12 +32,12 @@ class Conversation extends Component {
 	}
 
 	componentWillMount() {
-		this.props.conversationActions.getConversations()
+		this.props.actions.getConversations()
 			.then(() => this.setCurrentUser(this.props.params.user));
 	}
 
 	componentWillUnmount() {
-		this.props.conversationActions.reset();
+		this.props.actions.reset();
 	}
 
 	setCurrentUser(id = null) {
@@ -49,7 +46,7 @@ class Conversation extends Component {
 		const conv = conversations.find(o => o.id == id);
 		if (conv) {
 			this.setState({current_user: conv.user.full_name});
-			this.props.conversationActions.getMessages(id);
+			this.props.actions.getMessages(id);
 		}
 	}
 
