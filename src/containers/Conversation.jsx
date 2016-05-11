@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import * as conversationActions from 'actions/ConversationAction';
 // import * as appActions from 'actions/AppAction';
 import st from './styles/conversations.css';
-import Message from 'components/messages/Message';
+// import Messages from 'components/messages/Messages';
 // import _ from 'lodash';
 
 @connect(
@@ -23,12 +23,13 @@ class Conversation extends Component {
 		conversation: React.PropTypes.shape({
 			conversations: React.PropTypes.array,
 			messages: React.PropTypes.array
-		})
+		}),
+		children: React.PropTypes.node
 	};
 
 	constructor() {
 		super();
-		this.state = {current_user: ''};
+		this.state = {currentUser: ''};
 	}
 
 	componentWillMount() {
@@ -45,7 +46,7 @@ class Conversation extends Component {
 		id = id || conversations[0].id;
 		const conv = conversations.find(o => o.id == id);
 		if (conv) {
-			this.setState({current_user: conv.user.full_name});
+			this.setState({currentUser: conv.user.full_name});
 			this.props.actions.getMessages(id);
 		}
 	}
@@ -57,8 +58,20 @@ class Conversation extends Component {
 		}
 	}
 
+	childrenWithProps() {
+		if (!this.props.params.user) {
+			return this.props.children;
+		}
+		const {messages} = this.props.conversation;
+		const {currentUser} = this.state;
+		return React.Children.map(this.props.children,
+			(child) => React.cloneElement(child, { messages, currentUser })
+		);
+	}
+
 	render() {
-		const {conversations, messages} = this.props.conversation;
+		const {conversations} = this.props.conversation;
+		const children = this.childrenWithProps();
 		if (conversations.length) {
 			return (
 				<div className='row'>
@@ -71,13 +84,12 @@ class Conversation extends Component {
 									<img src={conv.user.avatar} className={st.avatar} width='40' height='40'/>
 									{conv.user.full_name}</Link>;
 							})}
-							<Link to='/messages/new' className={'collection-item ' + st.item}>New message</Link>
+							<Link to='/messages/new' 
+								className={'collection-item ' + st.item}
+								activeClassName='active'>New message</Link>
 						</div>
 					</div>
-					<div className='col m8'>
-					<h3>{this.state.current_user}</h3>
-					{ messages.length ? messages.map((message, i) => <Message key={i} message={message.message} />) : ''}
-					</div>
+					{children}
 				</div>
 			);
 		}

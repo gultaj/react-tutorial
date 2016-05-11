@@ -55,6 +55,27 @@ export function getMessages(conv_id) {
 	}
 }
 
+export function sendMessage(message) {
+	return (dispatch) => {
+		dispatch({type: CONVERSATION.SEND_MESSAGE_REQUEST});
+
+		return fetch(requestToken(`${URL_API}/messages`, {body: message}))
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					dispatch({
+						type: CONVERSATION.SEND_MESSAGE_SUCCESS, 
+						payload: data.messages
+					});
+				} else throw new Error(data.message); })
+			.catch(error => dispatch({
+				type: CONVERSATION.SEND_MESSAGE_FAILURE,
+				payload: error
+			}));
+
+	}
+}
+
 export function reset() {
 	return (dispatch) => dispatch({type: CONVERSATION.RESET});
 }
